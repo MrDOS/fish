@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="validation_location_distant">This location is very far from the previously-entered location in this session. Please verify its accuracy.</string>
+    <string name="validation_location_incorrect">This location is incorrect. Please start a new session.</string>
+    <string name="validation_date_far_before">This date/time is before your session date/time. Please verify its accuracy.</string>
+    <string name="validation_date_far_after">This date/time is after your session date/time. Please verify its accuracy.</string>
+    <string name="validation_tagged_error">The tag ID and tag color must be filled out.</string>
+    <string name="validation_tagid_format_unrecognised">This tag ID is not recognised. Please verify its accuracy.</string>
+    <string name="validation_tagcolor_mismatch">This tag color does not correspond to the selected species. Please verify its accuracy.</string>
+    <string name="validation_length_too_large">This length seems to be too large. Please verify its accuracy.</string>
+    <string name="validation_length_too_small">This length seems to be too small. Please verify its accuracy.</string>
+    <string name="validation_weight_too_large">This weight seems to be too large. Please verify its accuracy.</string>
+    <string name="validation_weight_too_small">This weight seems to be too small. Please verify its accuracy.</string>
+
+</resources>
