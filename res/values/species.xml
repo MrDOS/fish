@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="species_striped_bass">Striped bass</string>
+    <string name="species_skate">Skate</string>
+    <string name="species_atlantic_sturgeon">Atlantic sturgeon</string>
+    <string name="species_salmon">Salmon</string>
+
+</resources>
