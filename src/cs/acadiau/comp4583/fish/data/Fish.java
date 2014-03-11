@@ -13,8 +13,6 @@ import android.location.Location;
  */
 public class Fish
 {
-    private Location location;
-    private Date date;
     private Species species;
     private boolean tagged;
     private String tagId;
@@ -27,8 +25,6 @@ public class Fish
     /**
      * Define a caught fish.
      * 
-     * @param location the location in which the fish was caught
-     * @param date the date and time at which the fish was caught
      * @param species the species of fish
      * @param length the length of the fish
      * @param weight the weight of the fish
@@ -37,8 +33,6 @@ public class Fish
     public Fish(Location location, Date date, Species species, Length length,
             Weight weight, Condition condition)
     {
-        this.location = location;
-        this.date = date;
         this.species = species;
         this.tagged = false;
         this.tagId = null;
@@ -47,38 +41,6 @@ public class Fish
         this.length = length;
         this.weight = weight;
         this.condition = condition;
-    }
-
-    /**
-     * @param The location set in the GUI
-     */
-    public void setLocation(Location location)
-    {
-        this.location = location;
-    }
-
-    /**
-     * @return the location in which the fish was caught
-     */
-    public Location getLocation()
-    {
-        return this.location;
-    }
-
-    /**
-     * @param the date determined in the GUI
-     */
-    public void setDate(Date date)
-    {
-        this.date = date;
-    }
-
-    /**
-     * @return the date and time at which the fish was caught
-     */
-    public Date getDate()
-    {
-        return this.date;
     }
 
     /**
