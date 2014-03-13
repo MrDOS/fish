@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <string name="weight_1kg">&lt;1kg-5kg</string>
-    <string name="weight_6kg">6kg-9001kg</string>
-
-</resources>

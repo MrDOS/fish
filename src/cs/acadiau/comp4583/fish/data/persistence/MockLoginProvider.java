@@ -1,4 +1,7 @@
-package cs.acadiau.comp4583.fish.data;
+package cs.acadiau.comp4583.fish.data.persistence;
+
+import cs.acadiau.comp4583.fish.data.AuthenticationException;
+import cs.acadiau.comp4583.fish.data.User;
 
 /**
  * A login provider which approves all credentials.
