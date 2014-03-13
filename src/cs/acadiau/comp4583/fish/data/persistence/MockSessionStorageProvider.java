@@ -1,6 +1,8 @@
-package cs.acadiau.comp4583.fish.data;
+package cs.acadiau.comp4583.fish.data.persistence;
 
 import java.util.LinkedList;
+
+import cs.acadiau.comp4583.fish.data.FishingSession;
 
 /**
  * A mock session storage mechanism.
@@ -11,6 +13,12 @@ import java.util.LinkedList;
 public class MockSessionStorageProvider implements SessionStorageProvider
 {
     private LinkedList<FishingSession> sessions = new LinkedList<FishingSession>();
+
+    @Override
+    public boolean isProviderAvailable()
+    {
+        return true;
+    }
 
     @Override
     public void submitSession(FishingSession session)
