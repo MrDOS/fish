@@ -131,6 +131,8 @@ public class FishingSession extends ArrayList<Fish>
      */
     public boolean validateTagId(Fish fish) throws FishException
     {
+        if (!fish.isTagged()) return true;
+
         if (false) /* if the tagId does not follow our expected format... */
             throw new FishException(R.string.validation_tagid_format_unrecognised, false);
         return true;
@@ -145,6 +147,8 @@ public class FishingSession extends ArrayList<Fish>
      */
     public boolean validateTagColor(Fish fish) throws FishException
     {
+        if (!fish.isTagged()) return true;
+
         if (
         /* Pink is expected to be found on skate. */
         (fish.getTagColor() == TagColor.PINK && fish.getSpecies() != Species.SKATE)
@@ -175,25 +179,6 @@ public class FishingSession extends ArrayList<Fish>
                     false);
         else if (false) /* if the given length is too small... */
             throw new FishException(R.string.validation_length_too_small,
-                    false);
-        return true;
-    }
-
-    /**
-     * Validates the fish weight to ensure that its weight is not outside the
-     * expected range.
-     * 
-     * @param fish the current fish
-     * @return true
-     * @throws FishException in the event of improper data
-     */
-    public boolean validateFishWeight(Fish fish) throws FishException
-    {
-        if (false) /* if the given weight is too large... */
-            throw new FishException(R.string.validation_weight_too_large,
-                    false);
-        else if (false) /* if the given weight is too small... */
-            throw new FishException(R.string.validation_weight_too_small,
                     false);
         return true;
     }

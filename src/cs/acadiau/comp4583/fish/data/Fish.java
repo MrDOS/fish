@@ -1,8 +1,6 @@
 package cs.acadiau.comp4583.fish.data;
 
-import java.sql.Date;
-
-import android.location.Location;
+import java.io.Serializable;
 
 /**
  * A caught fish.
@@ -11,27 +9,26 @@ import android.location.Location;
  * @author Samuel Coleman <105709c@acadiau.ca>
  * @author Jeremy Wheaton <105823w@acadiau.ca>
  */
-public class Fish
+public class Fish implements Serializable
 {
+    private static final long serialVersionUID = 1L;
+
     private Species species;
     private boolean tagged;
     private String tagId;
     private TagColor tagColor;
     private boolean tookSample;
-    private Length length;
-    private Weight weight;
+    private int length;
     private Condition condition;
 
     /**
      * Define a caught fish.
      * 
      * @param species the species of fish
-     * @param length the length of the fish
-     * @param weight the weight of the fish
+     * @param length the length of the fish in millimetres
      * @param condition the condition of the fish
      */
-    public Fish(Location location, Date date, Species species, Length length,
-            Weight weight, Condition condition)
+    public Fish(Species species, int length, Condition condition)
     {
         this.species = species;
         this.tagged = false;
@@ -39,12 +36,11 @@ public class Fish
         this.tagColor = null;
         this.tookSample = false;
         this.length = length;
-        this.weight = weight;
         this.condition = condition;
     }
 
     /**
-     * @param the species given by the angler
+     * @param species the species of fish
      */
     public void setSpecies(Species species)
     {
@@ -60,7 +56,7 @@ public class Fish
     }
 
     /**
-     * @param the tagged value given by the angler
+     * @param tagged whether or not the fish is tagged
      */
     public void setTagged(boolean tagged)
     {
@@ -76,7 +72,7 @@ public class Fish
     }
 
     /**
-     * @param the tagId entered by the angler
+     * @param tagId the fish tag ID
      */
     public void setTagId(String tagId)
     {
@@ -84,7 +80,7 @@ public class Fish
     }
 
     /**
-     * @return the ID of the fish tag
+     * @return the fish tag ID
      */
     public String getTagId()
     {
@@ -92,7 +88,7 @@ public class Fish
     }
 
     /**
-     * @param the tag color entered by the angler
+     * @param tagColor the colour of the fish tag
      */
     public void setTagColor(TagColor tagColor)
     {
@@ -108,7 +104,7 @@ public class Fish
     }
 
     /**
-     * @param the value for took sample given by the angler
+     * @param tookSample whether or not a scale sample was taken
      */
     public void setTookSample(boolean tookSample)
     {
@@ -116,7 +112,7 @@ public class Fish
     }
 
     /**
-     * @return whether or not a sample was taken
+     * @return whether or not a scale sample was taken
      */
     public boolean tookSample()
     {
@@ -124,39 +120,23 @@ public class Fish
     }
 
     /**
-     * @param The length value given by the angler
+     * @param length the length of the fish in millimetres
      */
-    public void setLength(Length length)
+    public void setLength(int length)
     {
         this.length = length;
     }
 
     /**
-     * @return the length of the fish
+     * @return the length of the fish in millimetres
      */
-    public Length getLength()
+    public double getLength()
     {
         return this.length;
     }
 
     /**
-     * @param the weight given by the angler
-     */
-    public void setWeight(Weight weight)
-    {
-        this.weight = weight;
-    }
-
-    /**
-     * @return the weight of the fish
-     */
-    public Weight getWeight()
-    {
-        return this.weight;
-    }
-
-    /**
-     * @param the condition of the fish as determined by the angler
+     * @param condition the condition of the fish
      */
     public void setCondition(Condition condition)
     {
