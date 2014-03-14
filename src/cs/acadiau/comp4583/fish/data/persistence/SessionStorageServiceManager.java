@@ -23,7 +23,7 @@ public class SessionStorageServiceManager
      */
     public void submitSession(FishingSession session) throws FishException
     {
-        for (Fish fish : session)
+        for (Fish fish : session.getFish())
         {
             fish.validate(true);
         }

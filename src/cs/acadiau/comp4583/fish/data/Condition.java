@@ -1,5 +1,7 @@
 package cs.acadiau.comp4583.fish.data;
 
+import com.google.gson.annotations.SerializedName;
+
 import cs.acadiau.comp4583.fish.R;
 
 /**
@@ -10,27 +12,24 @@ import cs.acadiau.comp4583.fish.R;
  */
 public enum Condition
 {
-    VIGOROUS(R.string.condition_vigorous, 0),
-    HEALTHY(R.string.condition_healthy, 0),
-    POOR(R.string.condition_poor, 0),
-    MORIBUND(R.string.condition_moribund, 0);
+    @SerializedName("healthy")
+    HEALTHY(R.string.condition_healthy),
+    
+    @SerializedName("dead")
+    DEAD(R.string.condition_dead),
+    
+    @SerializedName("weak")
+    WEAK(R.string.condition_weak);
 
     private int name;
-    private int databaseValue;
-
-    private Condition(int name, int databaseValue)
+    
+    private Condition(int name)
     {
         this.name = name;
-        this.databaseValue = databaseValue;
     }
-
+    
     public int getName()
     {
         return this.name;
-    }
-
-    protected int getDatabaseValue()
-    {
-        return this.databaseValue;
     }
 }

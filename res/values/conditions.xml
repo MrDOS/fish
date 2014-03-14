@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="condition_vigorous">Vigorous</string>
+    <string name="condition_dead">Dead</string>
+    <string name="condition_weak">Weak</string>
     <string name="condition_healthy">Healthy</string>
-    <string name="condition_poor">Poor</string>
-    <string name="condition_moribund">Moribund</string>
 
 </resources>

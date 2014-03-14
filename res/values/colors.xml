@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="color_pink">Pink</string>
     <string name="color_blue">Blue</string>
+    <string name="color_pink">Pink</string>
+    <string name="color_red">Red</string>
     <string name="color_yellow">Yellow</string>
-    <string name="color_orange">Orange</string>
-    <string name="color_green">Green</string>
 
 </resources>
