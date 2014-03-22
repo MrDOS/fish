@@ -11,27 +11,23 @@ import com.google.gson.JsonElement;
 
 public class FishtailSessionStorageProvider implements SessionStorageProvider
 {
+    private static final String TEST_HOSTNAME = "falcon.acadiau.ca";
+    private static final int REACHABLE_TIMEOUT = 1000;
+
     @Override
     public boolean isProviderAvailable()
     {
-        // TODO Auto-generated method stub
-        // reach falcon-bool
         try
         {
-            if (InetAddress.getByName("falcon.acadiau.ca").isReachable(100))
-                return true;
-            else
-                return false;
+            return InetAddress
+                    .getByName(FishtailSessionStorageProvider.TEST_HOSTNAME)
+                    .isReachable(FishtailSessionStorageProvider.REACHABLE_TIMEOUT);
         }
         catch (UnknownHostException e)
         {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
         catch (IOException e)
         {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
         return false;
     }
