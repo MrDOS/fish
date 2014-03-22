@@ -1,8 +1,8 @@
-package cs.acadiau.comp4583.fish.data.persistence;
+package ca.acadiau.cs.comp4583.fish.data.persistence;
 
 import java.util.LinkedList;
 
-import cs.acadiau.comp4583.fish.data.FishingSession;
+import ca.acadiau.cs.comp4583.fish.data.FishingSession;
 
 /**
  * A mock session storage mechanism.

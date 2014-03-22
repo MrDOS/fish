@@ -1,7 +1,7 @@
-package cs.acadiau.comp4583.fish.data.persistence;
+package ca.acadiau.cs.comp4583.fish.data.persistence;
 
-import cs.acadiau.comp4583.fish.data.AuthenticationException;
-import cs.acadiau.comp4583.fish.data.User;
+import ca.acadiau.cs.comp4583.fish.data.AuthenticationException;
+import ca.acadiau.cs.comp4583.fish.data.User;
 
 /**
  * Defines the interface by which users are authenticated.

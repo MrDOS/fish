@@ -1,8 +1,8 @@
-package cs.acadiau.comp4583.fish.data;
+package ca.acadiau.cs.comp4583.fish.data;
 
 import java.io.Serializable;
 
-import cs.acadiau.comp4583.fish.R;
+import ca.acadiau.cs.comp4583.fish.R;
 
 /**
  * A caught fish.

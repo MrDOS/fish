@@ -1,6 +1,6 @@
-package cs.acadiau.comp4583.fish.data.persistence;
+package ca.acadiau.cs.comp4583.fish.data.persistence;
 
-import cs.acadiau.comp4583.fish.data.FishingSession;
+import ca.acadiau.cs.comp4583.fish.data.FishingSession;
 
 /**
  * Defines the interface by which sessions are stored.

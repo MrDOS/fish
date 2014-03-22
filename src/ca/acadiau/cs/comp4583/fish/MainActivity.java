@@ -1,4 +1,4 @@
-package cs.acadiau.comp4583.fish;
+package ca.acadiau.cs.comp4583.fish;
 
 import java.sql.Date;
 
@@ -9,11 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import cs.acadiau.comp4583.fish.data.Condition;
-import cs.acadiau.comp4583.fish.data.Fish;
-import cs.acadiau.comp4583.fish.data.FishingSession;
-import cs.acadiau.comp4583.fish.data.Species;
-import cs.acadiau.comp4583.fish.data.persistence.FishtailSessionStorageProvider;
+import ca.acadiau.cs.comp4583.fish.data.Condition;
+import ca.acadiau.cs.comp4583.fish.data.Fish;
+import ca.acadiau.cs.comp4583.fish.data.FishingSession;
+import ca.acadiau.cs.comp4583.fish.data.Species;
+import ca.acadiau.cs.comp4583.fish.data.persistence.FishtailSessionStorageProvider;
 
 public class MainActivity extends Activity
 {

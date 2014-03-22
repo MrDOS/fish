@@ -1,4 +1,4 @@
-package cs.acadiau.comp4583.fish;
+package ca.acadiau.cs.comp4583.fish;
 
 import android.app.Activity;
 import android.content.Context;

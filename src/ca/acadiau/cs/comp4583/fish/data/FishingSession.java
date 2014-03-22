@@ -1,10 +1,7 @@
-package cs.acadiau.comp4583.fish.data;
+package ca.acadiau.cs.comp4583.fish.data;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.ArrayList;
-
-import android.location.Location;
 
 /**
  * A fishing session.
@@ -66,7 +63,7 @@ public class FishingSession implements Serializable
     {
         return this.latitude;
     }
-    
+
     /**
      * @param location the location at which the session occurred
      */
@@ -167,7 +164,7 @@ public class FishingSession implements Serializable
     {
         return catches;
     }
-    
+
     /**
      * @param catches the number of fish caught
      */

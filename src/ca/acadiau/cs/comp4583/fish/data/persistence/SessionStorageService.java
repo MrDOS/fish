@@ -1,4 +1,4 @@
-package cs.acadiau.comp4583.fish.data.persistence;
+package ca.acadiau.cs.comp4583.fish.data.persistence;
 
 import android.app.Service;
 import android.content.Intent;
