@@ -1,0 +1,162 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="10dp" >
+
+    <TextView
+        android:id="@+id/location_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/location_text_text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/location_text_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/location_text"
+        android:ems="10" 
+        android:inputType="text">
+        <requestFocus /></EditText>
+
+    <EditText
+        android:id="@+id/num_anglers_text_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/num_anglers_text"
+        android:layout_toLeftOf="@+id/checkBox1"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/num_rods_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/num_anglers_text_edit"
+        android:text="@string/num_rods_text_text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/num_rods_text_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/num_rods_text"
+        android:ems="10" 
+        android:inputType="number"/>
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/num_anglers_text"
+        android:text="@string/estimate" />
+
+    <TextView
+        android:id="@+id/num_catches_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/num_rods_text_edit"
+        android:text="@string/num_catches_text_text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/num_catches_text_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/num_anglers_text_edit"
+        android:layout_below="@+id/num_catches_text"
+        android:ems="10" 
+        android:inputType="text"/>
+
+    <TextView
+        android:id="@+id/num_fishes_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/num_catches_text_edit"
+        android:text="@string/num_fish_text_text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/num_anglers_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/location_text_edit"
+        android:text="@string/num_anglers_text_text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <CheckBox
+        android:id="@+id/CheckBox01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/num_fishes_text_edit"
+        android:layout_alignBottom="@+id/num_fishes_text_edit"
+        android:layout_toRightOf="@+id/num_fishes_text_edit"
+        android:text="@string/edited" />
+
+    <CheckBox
+        android:id="@+id/CheckBox02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/num_catches_text_edit"
+        android:layout_alignBottom="@+id/num_catches_text_edit"
+        android:layout_toRightOf="@+id/num_catches_text_edit"
+        android:text="@string/estimate" />
+
+    <EditText
+        android:id="@+id/num_fishes_text_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/num_fishes_text"
+        android:layout_toLeftOf="@+id/CheckBox02"
+        android:ems="10"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/end_time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/num_fishes_text_edit"
+        android:text="@string/end_time_text_text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/end_time_text_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/end_time_text"
+        android:ems="10" 
+        android:inputType=""/>
+
+    <Button
+        android:id="@+id/complete_session_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/complete_session_button" />
+
+    <Button
+        android:id="@+id/submit_new_session_data_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/back_session" />
+
+</RelativeLayout>

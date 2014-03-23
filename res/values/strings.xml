@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Fish</string>
+    <string name="app_name">Fish For Friends</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_fish">Fish</string>
     <string name="provider_error">Couldn\'t access network- or Wi-Fi-based location information!</string>
+    <string name="begin_session">Begin New Session</string>
+    <string name="location_text_text">Location</string>
+    <string name="spacer">             </string>
+    <string name="date_text_text">Date</string>
+    <string name="start_time_text_text">Start Time</string>
+    <string name="end_time_text_text">End Time</string>
+    <string name="total_fish_caught_text_text">Total Fish Caught</string>
+    <string name="num_anglers_text_text">Number of Anglers</string>
+    <string name="num_contributing_anglers_text_text">Number of Contributing Anglers</string>
+    <string name="num_rods_text_text">Number of Rods</string>
+    <string name="optional_session_begin_text_text">Optional Sessional Data</string>
+    <string name="submit_new_session_data_button_text">Begin Session</string>
+    <string name="num_anglers_edit_text">Can be added later</string>
+    <string name="number_contributing_anglers_edit_text">Can be added later</string>
+    <string name="estimate">Estimate</string>
+    <string name="num_catches_text_text">Number of Catches</string>
+    <string name="num_fish_text_text">Number of Fish</string>
+    <string name="edited">Edited</string>
+    <string name="back_session">Back to Session</string>
+    <string name="edit_session_button_text">Edit Session Data</string>
+    <string name="end_session_button_text">End Sesssion</string>
+    <string name="submit_fish_button_text">Submit Fish</string>
+    <string name="complete_session_button">End Session</string>
+    <string name="save_changes_button_text">Save</string>
 
 </resources>
