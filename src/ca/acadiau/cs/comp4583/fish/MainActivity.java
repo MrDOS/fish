@@ -52,11 +52,11 @@ public class MainActivity extends Activity
                 ses.setExactAnglers(true);
                 ses.setExactCatches(true);
                 
-                Fish first = new Fish(Species.ATLANTIC_STURGEON, 10, Condition.HEALTHY);
+                Fish first = new Fish(Species.ATLANTIC_STURGEON, 10, false, Condition.HEALTHY, Condition.HEALTHY);
                 ses.getFish().add(first);
-                Fish second = new Fish(Species.DOGFISH, 15, Condition.DEAD);
+                Fish second = new Fish(Species.DOGFISH, 15, false, Condition.DEAD, Condition.DEAD);
                 ses.getFish().add(second);
-                Fish third = new Fish(Species.STRIPED_BASS, 3, Condition.WEAK);
+                Fish third = new Fish(Species.STRIPED_BASS, 3, false, Condition.WEAK, Condition.DEAD);
                 ses.getFish().add(third);
                 
                 FishtailSessionStorageProvider hipls = new FishtailSessionStorageProvider();
