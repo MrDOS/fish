@@ -13,6 +13,7 @@ public class FishingSession implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
+    private String username;
     private double latitude;
     private double longitude;
     private long startDate;
@@ -28,6 +29,7 @@ public class FishingSession implements Serializable
     /**
      * Set up the session.
      * 
+     * @param username the associated TrackMyFish username
      * @param latitude the lat in which the fish was caught
      * @param logitude the long in which the fish was caught
      * @param startDate the start date of the session
@@ -35,9 +37,11 @@ public class FishingSession implements Serializable
      * @param anglers the number of other anglers in the area
      * @param lines the number of lines used by the session party
      */
-    public FishingSession(double latitude, double longitude, long startDate, long endDate, int anglers, int lines)
+    public FishingSession(String username, double latitude, double longitude,
+            long startDate, long endDate, int anglers, int lines)
     {
         super();
+        this.username = username;
         this.latitude = latitude;
         this.longitude = longitude;
         this.startDate = startDate;
@@ -46,6 +50,22 @@ public class FishingSession implements Serializable
         this.lines = lines;
 
         this.fish = new ArrayList<Fish>();
+    }
+
+    /**
+     * @param username the associated TrackMyFish username
+     */
+    public void setUsername(String username)
+    {
+        this.username = username;
+    }
+
+    /**
+     * @return the associated TrackMyFish username
+     */
+    public String getUsername()
+    {
+        return this.username;
     }
 
     /**
@@ -187,5 +207,22 @@ public class FishingSession implements Serializable
     public void setExactCatches(boolean exactCatches)
     {
         this.exactCatches = exactCatches;
+    }
+
+    /**
+     * Validate all fish within the session. This is equivalent to iterating
+     * over all fish and manually calling {@link Fish#validate(boolean)} on each
+     * one.
+     * 
+     * @param onlyFatal only throw an exception upon fatal validation errors
+     * @return true
+     * @throws FishException in the event of improper data
+     */
+    public boolean validate(boolean onlyFatal) throws FishException
+    {
+        for (Fish fish : this.fish)
+            fish.validate(onlyFatal);
+
+        return true;
     }
 }

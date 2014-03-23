@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="fishtail_endpoint">http://fishtail_hostname/fishtail</string>
+
+</resources>

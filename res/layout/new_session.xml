@@ -12,16 +12,16 @@
         android:text="@string/location_text_text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <EditText
-        android:id="@+id/location_text_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/location_text"
-        android:ems="10" 
-        android:inputType="text">
-        <requestFocus /></EditText>
+    <Spinner
+       android:id="@+id/location_text_spinner"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentRight="true"
+       android:layout_below="@+id/location_text"
+       android:background="@android:drawable/btn_dropdown"
+       android:ems="10"
+       android:spinnerMode="dropdown" />
 
     <EditText
         android:id="@+id/start_time_text_edit"
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/location_text_edit"
+        android:layout_below="@+id/location_text_spinner"
         android:text="@string/date_text_text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 

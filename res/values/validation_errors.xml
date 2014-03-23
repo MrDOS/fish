@@ -10,7 +10,7 @@
     <string name="validation_tagcolor_mismatch">This tag color does not correspond to the selected species. Please verify its accuracy.</string>
     <string name="validation_length_too_large">This length seems to be too large. Please verify its accuracy.</string>
     <string name="validation_length_too_small">This length seems to be too small. Please verify its accuracy.</string>
-    <string name="validation_weight_too_large">This weight seems to be too large. Please verify its accuracy.</string>
-    <string name="validation_weight_too_small">This weight seems to be too small. Please verify its accuracy.</string>
+   <!-- We're not zombie-compatible. -->
+    <string name="validation_conflicting_conditions">A fish that was dead on capture must be dead on release.</string>
 
 </resources>
