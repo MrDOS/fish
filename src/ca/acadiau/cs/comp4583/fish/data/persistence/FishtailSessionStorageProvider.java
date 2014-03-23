@@ -1,13 +1,13 @@
 package ca.acadiau.cs.comp4583.fish.data.persistence;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
@@ -31,6 +31,9 @@ public class FishtailSessionStorageProvider implements SessionStorageProvider
 {
     private static final String TEST_HOSTNAME = "falcon.acadiau.ca";
     private static final int REACHABLE_TIMEOUT = 1000;
+
+    private static final int SECRET_LENGTH = 40;
+    private static final String SECRET_XOR_KEY = "MgYhuXdhANWLbiDv3SRpJ94wTiYl5cgc3gD9keRK";
 
     private final String endpoint;
     private final String secret;
@@ -83,5 +86,23 @@ public class FishtailSessionStorageProvider implements SessionStorageProvider
         }
 
         client.execute(request);
+    }
+
+    /**
+     * Load and decode the Fishtail secret key from file. The secret key stored
+     * in assets/fishtail_secret is not immediately usable; it is XOR'd against
+     * the value of FishtailSessionStorageProvider.SECRET_XOR_KEY. Yes, this is
+     * inconvenient. Suck it up, buttercup.
+     * 
+     * @param stream the stream containing the encoded secret key
+     * @return the Fishtail secret key
+     */
+    public static String loadSecret(InputStream stream) throws IOException
+    {
+        StringBuilder secret = new StringBuilder(FishtailSessionStorageProvider.SECRET_LENGTH);
+        for (int i = 0; i < FishtailSessionStorageProvider.SECRET_LENGTH; i++)
+            secret.append(((char) stream.read()) ^ FishtailSessionStorageProvider.SECRET_XOR_KEY.charAt(i));
+
+        return secret.toString();
     }
 }
