@@ -1,5 +1,6 @@
 package ca.acadiau.cs.comp4583.fish;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.LinkedList;
 
@@ -59,13 +60,20 @@ public class MainActivity extends Activity
                 Fish third = new Fish(Species.STRIPED_BASS, 3, false, Condition.WEAK, Condition.DEAD);
                 ses.getFish().add(third);
                 
-                FishtailSessionStorageProvider hipls = new FishtailSessionStorageProvider();
+                FishtailSessionStorageProvider hipls = new FishtailSessionStorageProvider(getString(R.string.fishtail_endpoint), "");
                 //System.out.println("Is available: "+hipls.isProviderAvailable());
                 //boolean isavail = hipls.isProviderAvailable();
                 //System.out.println(isavail);
                 LinkedList<FishingSession> sessions = new LinkedList<FishingSession>();
                 sessions.add(ses);
-                hipls.submitSession(sessions);
+                try
+                {
+                    hipls.submitSession(sessions);
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
 
             }
         });

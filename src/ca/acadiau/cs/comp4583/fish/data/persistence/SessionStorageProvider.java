@@ -1,5 +1,6 @@
 package ca.acadiau.cs.comp4583.fish.data.persistence;
 
+import java.io.IOException;
 import java.util.List;
 
 import ca.acadiau.cs.comp4583.fish.data.FishingSession;
@@ -24,6 +25,7 @@ public interface SessionStorageProvider
      * Submit a session to remote, persistent storage.
      * 
      * @param session the finished session
+     * @throws IOException in the event of a failure during submission
      */
-    public void submitSession(List<FishingSession> session);
+    public void submitSession(List<FishingSession> session) throws IOException;
 }
