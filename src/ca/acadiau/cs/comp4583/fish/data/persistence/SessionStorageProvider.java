@@ -1,5 +1,7 @@
 package ca.acadiau.cs.comp4583.fish.data.persistence;
 
+import java.util.List;
+
 import ca.acadiau.cs.comp4583.fish.data.FishingSession;
 
 /**
@@ -23,5 +25,5 @@ public interface SessionStorageProvider
      * 
      * @param session the finished session
      */
-    public void submitSession(FishingSession session);
+    public void submitSession(List<FishingSession> session);
 }

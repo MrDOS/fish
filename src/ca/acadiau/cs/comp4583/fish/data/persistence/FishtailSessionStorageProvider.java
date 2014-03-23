@@ -3,11 +3,12 @@ package ca.acadiau.cs.comp4583.fish.data.persistence;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.List;
 
 import ca.acadiau.cs.comp4583.fish.data.FishingSession;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
+import com.google.gson.reflect.TypeToken;
 
 public class FishtailSessionStorageProvider implements SessionStorageProvider
 {
@@ -33,15 +34,11 @@ public class FishtailSessionStorageProvider implements SessionStorageProvider
     }
 
     @Override
-    public void submitSession(FishingSession session)
+    public void submitSession(List<FishingSession> sessions)
     {
-        // session to json, then http post it
-        Gson gson = new Gson();
+        /* First, we must serialize the sessions to JSON. */
+        String json = new Gson().toJson(sessions, new TypeToken<List<FishingSession>>() {}.getType());
 
-        JsonElement jsonElement = gson.toJsonTree(session);
-        jsonElement.getAsJsonObject().addProperty("catches", session.getFish().size());
-        String s = gson.toJson(jsonElement);
-
-        System.out.print(s);
+        System.out.print(json);
     }
 }

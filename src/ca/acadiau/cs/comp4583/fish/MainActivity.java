@@ -1,6 +1,7 @@
 package ca.acadiau.cs.comp4583.fish;
 
 import java.sql.Date;
+import java.util.LinkedList;
 
 import android.app.Activity;
 import android.content.Context;
@@ -62,7 +63,9 @@ public class MainActivity extends Activity
                 //System.out.println("Is available: "+hipls.isProviderAvailable());
                 //boolean isavail = hipls.isProviderAvailable();
                 //System.out.println(isavail);
-                hipls.submitSession(ses);
+                LinkedList<FishingSession> sessions = new LinkedList<FishingSession>();
+                sessions.add(ses);
+                hipls.submitSession(sessions);
 
             }
         });
