@@ -208,4 +208,21 @@ public class FishingSession implements Serializable
     {
         this.exactCatches = exactCatches;
     }
+
+    /**
+     * Validate all fish within the session. This is equivalent to iterating
+     * over all fish and manually calling {@link Fish#validate(boolean)} on each
+     * one.
+     * 
+     * @param onlyFatal only throw an exception upon fatal validation errors
+     * @return true
+     * @throws FishException in the event of improper data
+     */
+    public boolean validate(boolean onlyFatal) throws FishException
+    {
+        for (Fish fish : this.fish)
+            fish.validate(onlyFatal);
+
+        return true;
+    }
 }
