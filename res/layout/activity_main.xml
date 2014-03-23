@@ -9,11 +9,11 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/fishButton"
+        android:id="@+id/begin_session_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/fish_button_label" />
+        android:text="@string/begin_session" />
 
 </RelativeLayout>
