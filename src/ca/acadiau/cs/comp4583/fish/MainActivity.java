@@ -47,7 +47,7 @@ public class MainActivity extends Activity
                 Date end = new Date(System.currentTimeMillis());
 
                 //FishingSession(Location location, Date startDate, Date endDate, int anglers, int lines);
-                FishingSession ses = new FishingSession(45.67, -64.785, (System.currentTimeMillis() / 1000) - 3600, (System.currentTimeMillis() /1000), 10, 4);
+                FishingSession ses = new FishingSession("bob", 45.67, -64.785, (System.currentTimeMillis() / 1000) - 3600, (System.currentTimeMillis() /1000), 10, 4);
                 ses.setCatches(400);
                 ses.setExactAnglers(true);
                 ses.setExactCatches(true);
