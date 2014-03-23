@@ -31,7 +31,9 @@ public class NewSessionActivity extends Activity {
             	 //No Username (set to empty string), lattitude and logitude set to 1 for now
             	 //End and start date also set to 1 until code is written to parse the editText for date, 
             	 FishingSession session = new FishingSession("", 1, 1, 1,1, anglers, lines);
-            	 
+            	 Intent i = new Intent(getApplicationContext(),SubmitFishActivity.class);
+            	 i.putExtra("Session", session);
+            	 startActivity(i);
              }
          });
       
