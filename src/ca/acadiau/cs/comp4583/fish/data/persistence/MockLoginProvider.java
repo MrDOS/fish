@@ -10,7 +10,7 @@ import ca.acadiau.cs.comp4583.fish.data.User;
  * @since 1.0.0
  * @author Samuel Coleman <105709c@acadiau.ca>
  */
-public class MockLoginProvider implements LoginProvider
+public class MockLoginProvider extends AbstractLoginProvider
 {
     /**
      * Authenticate any set of user credentials.
@@ -21,8 +21,8 @@ public class MockLoginProvider implements LoginProvider
      * @throws AuthenticationException if the credentials are rejected
      */
     @Override
-    public void validate(String username, String password, LoginHandler handler)
+    public void validate(String username, String password)
     {
-        handler.onLoginSuccess(new User(username));
+        this.notifyLoginSuccess(new User(username));
     }
 }

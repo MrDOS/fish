@@ -3,7 +3,7 @@ package ca.acadiau.cs.comp4583.fish.data.persistence;
 import ca.acadiau.cs.comp4583.fish.data.User;
 
 /**
- * Defines the interface by which users are authenticated.
+ * Callbacks for user authentication.
  * 
  * @since 1.0.0
  * @author Samuel Coleman <105709c@acadiau.ca>
