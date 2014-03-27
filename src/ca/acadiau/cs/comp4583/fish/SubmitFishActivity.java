@@ -145,12 +145,12 @@ public class SubmitFishActivity extends Activity {
 					fish.setTookSample(tookSample);
 
 				} else {
-					String TagId;
-					TagColor tagColor = (TagColor) tagColorSpinner.getSelectedItem();
-
 					EditText taggedIDText = (EditText) findViewById(R.id.tagged_id_text_edit);
-					TagId = taggedIDText.getText().toString();
+                    String tagId = taggedIDText.getText().toString();
 
+                    TagColor tagColor = (TagColor) tagColorSpinner.getSelectedItem();
+
+                    fish.setTagId(tagId);
 					fish.setTagColor(tagColor);
 				}
 				session.getFish().add(fish);
