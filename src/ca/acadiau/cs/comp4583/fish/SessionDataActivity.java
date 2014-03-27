@@ -31,10 +31,10 @@ public class SessionDataActivity extends Activity {
                  android.R.layout.simple_spinner_item, location_options);
                  dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                  location_spinner.setAdapter(dataAdapter);
-		
+      
 		Intent thisIntent = getIntent();
 		final FishingSession session = (FishingSession) thisIntent.getSerializableExtra("Session");
-		
+//					location_spinner.set
 		final EditText anglersText = (EditText) findViewById(R.id.num_anglers_text_edit);
 		anglersText.setText(Integer.toString(session.getAnglers()));
 		
@@ -46,6 +46,7 @@ public class SessionDataActivity extends Activity {
 		 end_session_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	Intent i = new Intent(getApplicationContext(),SubmitFishActivity.class);
+            	i.putExtra("Session", session);
            	 startActivity(i);
 		 
             }

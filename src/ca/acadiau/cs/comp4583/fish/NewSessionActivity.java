@@ -42,7 +42,7 @@ public class NewSessionActivity extends Activity {
             	 EditText anglersText = (EditText) findViewById(R.id.num_anglers_text_edit);
             	 int anglers = Integer.parseInt(anglersText.getText().toString());
             	 EditText linesText = (EditText) findViewById(R.id.num_rods_text_edit);
-            	 int lines = Integer.parseInt(anglersText.getText().toString());
+            	 int lines = Integer.parseInt(linesText.getText().toString());
             	//FishingSession(Location location, Date startDate, Date endDate, int anglers, int lines);
             	 //No Username (set to empty string), lattitude and logitude set to 1 for now
             	 //End and start date also set to 1 until code is written to parse the editText for date, 
