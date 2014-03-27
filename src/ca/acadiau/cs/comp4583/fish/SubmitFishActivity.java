@@ -21,7 +21,6 @@ import ca.acadiau.cs.comp4583.fish.data.Species;
 import ca.acadiau.cs.comp4583.fish.data.TagColor;
 
 public class SubmitFishActivity extends Activity {
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,8 +37,8 @@ public class SubmitFishActivity extends Activity {
 		final Spinner tagged_spinner = (Spinner) findViewById(R.id.tagged_spinner);
 		// ====
 		ArrayList<String> tagged_options = new ArrayList<String>();
-		tagged_options.add("No");
-		tagged_options.add("Yes");
+		tagged_options.add(getString(R.string.no));
+		tagged_options.add(getString(R.string.yes));
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, tagged_options);
@@ -82,7 +81,7 @@ public class SubmitFishActivity extends Activity {
 
 				RelativeLayout tagged_yes_layout;
 				RelativeLayout tagged_no_layout;
-				if (tagged_spinner.getSelectedItem().toString().equals("no")) {
+				if (tagged_spinner.getSelectedItem().toString().equals(getString(R.string.no))) {
 					tagged_no_layout = (RelativeLayout) findViewById(R.id.tagged_no);
 					tagged_no_layout.setVisibility(View.VISIBLE);
 
@@ -140,7 +139,7 @@ public class SubmitFishActivity extends Activity {
 				Fish fish = new Fish(species, length, !estimate, catchCondition,
 						releaseCondition);
 
-				if (tagged_spinner.getSelectedItem().toString().equals("No")) {
+				if (tagged_spinner.getSelectedItem().toString().equals(getString(R.string.no))) {
 					CheckBox tookSampleChbx = (CheckBox) findViewById(R.id.tagged_scaled_check);
 					boolean tookSample = tookSampleChbx.isChecked();
 					fish.setTookSample(tookSample);

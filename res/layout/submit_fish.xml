@@ -196,16 +196,6 @@
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/fish_release_condition_spinner"
             android:text="@string/submit_fish_button_text" />
-
-        <Button
-            android:id="@+id/save_fish_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@+id/fish_release_condition_spinner"
-            android:text="@string/save_fish_button_text"
-            android:visibility="gone" />
     </RelativeLayout>
 
 </ScrollView>

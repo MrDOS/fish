@@ -6,6 +6,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_fish">Fish</string>
     <string name="provider_error">Couldn\'t access network- or Wi-Fi-based location information!</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="begin_session">Begin New Session</string>
     <string name="location_text_text">Location</string>
     <string name="spacer">             </string>
@@ -37,6 +39,6 @@
     <string name="tagged_scale_text_text">Scale Sample</string>
     <string name="fish_length_text_text">Fish Length</string>
     <string name="fish_condition_text_text">Fish Caught Condition</string>
-	<string name="fish_release_condition_text_text">Fish Release Condition</string>    
+	<string name="fish_release_condition_text_text">Fish Release Condition</string>
 
 </resources>
