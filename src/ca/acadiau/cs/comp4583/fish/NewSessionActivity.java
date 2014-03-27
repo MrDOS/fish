@@ -31,6 +31,7 @@ public class NewSessionActivity extends Activity {
                  android.R.layout.simple_spinner_item, location_options);
                  dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                  location_spinner.setAdapter(dataAdapter);
+                 
          new_session_button.setOnClickListener(new View.OnClickListener() {
              public void onClick(View v) {
       

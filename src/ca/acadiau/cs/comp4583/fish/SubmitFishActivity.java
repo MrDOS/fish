@@ -191,7 +191,7 @@ public class SubmitFishActivity extends Activity {
 				else if (releaseConditionString.equals("weak"))
 					releaseCondition = Condition.WEAK;
 
-				Fish fish = new Fish(species, length, estimate, catchCondition,
+				Fish fish = new Fish(species, length, !estimate, catchCondition,
 						releaseCondition);
 
 				if (tagged_spinner.getSelectedItem().toString().equals("no")) {
