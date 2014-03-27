@@ -1,5 +1,6 @@
 package ca.acadiau.cs.comp4583.fish.data;
 
+import ca.acadiau.cs.comp4583.fish.FishApplication;
 import ca.acadiau.cs.comp4583.fish.R;
 
 import com.google.gson.annotations.SerializedName;
@@ -28,8 +29,9 @@ public enum Condition
         this.name = name;
     }
 
-    public int getName()
+    @Override
+    public String toString()
     {
-        return this.name;
+        return FishApplication.getContext().getString(this.name);
     }
 }
