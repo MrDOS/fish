@@ -1,6 +1,7 @@
 package ca.acadiau.cs.comp4583.fish;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -26,12 +27,10 @@ public class SessionDataActivity extends Activity {
 
 		final Spinner location_spinner = (Spinner) findViewById(R.id.location_text_spinner);
 
-		ArrayList<String> location_options = new ArrayList<String>();
-		location_options.add("Bridgewater");
-		location_options.add("Wolfville");
+		List<String> locations = Arrays.asList(getResources().getStringArray(R.array.locations));
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, location_options);
+				android.R.layout.simple_spinner_item, locations);
 		dataAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		location_spinner.setAdapter(dataAdapter);

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="locations">
+        <item>Saint John River</item>
+        <item>Passamaquoddy Bay</item>
+        <item>Annapolis River</item>
+        <item>Bear River</item>
+        <item>Minas Passage</item>
+        <item>Noel Shore</item>
+        <item>Avon River</item>
+        <item>Avon Estuary</item>
+        <item>Kennetcook River</item>
+        <item>Cogmagun River</item>
+        <item>Gaspereau River</item>
+        <item>The Guzzle</item>
+        <item>Five Islands</item>
+        <item>Economy River</item>
+        <item>Walton River</item>
+        <item>St. Croix River</item>
+        <item>Avon Estuary</item>
+        <item>Cornwallis River</item>
+        <item>Habitant River</item>
+        <item>Harrington River</item>
+        <item>Petitcodiac River</item>
+        <item>Memramcook River</item>
+        <item>Tantramar River</item>
+        <item>Aulac River</item>
+        <item>Shubenacadie River</item>
+        <item>Stewiacke River</item>
+        <item>Salmon River (Truro)</item>
+        <item>Great Village River</item>
+        <item>Debert River</item>
+        <item>Chiganois River</item>
+        <item>North River (Truro)</item>
+        <item>Bass River</item>
+        <item>Portapique River</item>
+        <item>Grand Lake</item>
+        <item>Cape Breton</item>
+        <item>Other</item>
+    </string-array>
+
+</resources>
