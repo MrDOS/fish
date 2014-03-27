@@ -1,6 +1,7 @@
 package ca.acadiau.cs.comp4583.fish;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -26,13 +27,11 @@ public class EndSessionActivity extends Activity {
 		 final Button complete_session_button = (Button) findViewById(R.id.complete_session_button);
 		 final Button back_session_button = (Button) findViewById(R.id.submit_new_session_data_button);
 		final Spinner location_spinner = (Spinner) findViewById(R.id.location_text_spinner);
-		
-		ArrayList<String> location_options = new ArrayList<String>();
-   	 location_options.add("Bridgewater");
-		 location_options.add("Wolfville");	  
+
+        List<String> locations = Arrays.asList(getResources().getStringArray(R.array.locations));
 		 
 		 ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, location_options);
+                android.R.layout.simple_spinner_item, locations);
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 location_spinner.setAdapter(dataAdapter);
                 
