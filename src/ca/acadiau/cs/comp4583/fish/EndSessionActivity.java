@@ -15,8 +15,9 @@ public class EndSessionActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.end_session);
-		
-	/*	 final Button end_session_button = (Button) findViewById(R.id.end_session_button);
+		Intent thisIntent = getIntent();
+		final FishingSession session = (FishingSession) thisIntent.getSerializableExtra("Session");
+		 final Button end_session_button = (Button) findViewById(R.id.end_session_button);
 		
 		 
 		 end_session_button.setOnClickListener(new View.OnClickListener() {
@@ -24,7 +25,7 @@ public class EndSessionActivity extends Activity {
 		 
 		 
              }
-		 });*/
+		 });
 		 
       
      }

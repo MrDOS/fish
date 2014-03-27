@@ -17,7 +17,8 @@ public class SessionDataActivity extends Activity {
 		setContentView(R.layout.session_data);
 		final Button end_session_button = (Button) findViewById(R.id.submit_new_session_data_button);
 		
-		 
+		Intent thisIntent = getIntent();
+		final FishingSession session = (FishingSession) thisIntent.getSerializableExtra("Session");
 		 end_session_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	Intent i = new Intent(getApplicationContext(),SubmitFishActivity.class);
