@@ -1,6 +1,7 @@
 package ca.acadiau.cs.comp4583.fish.data.persistence;
 
-import ca.acadiau.cs.comp4583.fish.data.AuthenticationException;
+import org.apache.http.auth.AuthenticationException;
+
 import ca.acadiau.cs.comp4583.fish.data.User;
 
 /**
@@ -20,8 +21,8 @@ public class MockLoginProvider implements LoginProvider
      * @throws AuthenticationException if the credentials are rejected
      */
     @Override
-    public User validate(String username, String password) throws AuthenticationException
+    public void validate(String username, String password, LoginHandler handler)
     {
-        return new User();
+        handler.onLoginSuccess(new User(username));
     }
 }

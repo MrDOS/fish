@@ -1,7 +1,6 @@
 package ca.acadiau.cs.comp4583.fish.data.persistence;
 
-import ca.acadiau.cs.comp4583.fish.data.AuthenticationException;
-import ca.acadiau.cs.comp4583.fish.data.User;
+import org.apache.http.auth.AuthenticationException;
 
 /**
  * Defines the interface by which users are authenticated.
@@ -19,5 +18,5 @@ public interface LoginProvider
      * @return the authenticated user
      * @throws AuthenticationException if the credentials are rejected
      */
-    public User validate(String username, String password) throws AuthenticationException;
+    public void validate(String username, String password, LoginHandler handler);
 }

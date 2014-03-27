@@ -8,4 +8,15 @@ package ca.acadiau.cs.comp4583.fish.data;
  */
 public class User
 {
+    private final String username;
+
+    public User(String username)
+    {
+        this.username = username;
+    }
+
+    public String getUsername()
+    {
+        return this.username;
+    }
 }
