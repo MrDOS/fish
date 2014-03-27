@@ -38,8 +38,8 @@ public class SubmitFishActivity extends Activity {
 		final Spinner tagged_spinner = (Spinner) findViewById(R.id.tagged_spinner);
 		// ====
 		ArrayList<String> tagged_options = new ArrayList<String>();
-		tagged_options.add("no");
-		tagged_options.add("yes");
+		tagged_options.add("No");
+		tagged_options.add("Yes");
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, tagged_options);
@@ -140,7 +140,7 @@ public class SubmitFishActivity extends Activity {
 				Fish fish = new Fish(species, length, !estimate, catchCondition,
 						releaseCondition);
 
-				if (tagged_spinner.getSelectedItem().toString().equals("no")) {
+				if (tagged_spinner.getSelectedItem().toString().equals("No")) {
 					CheckBox tookSampleChbx = (CheckBox) findViewById(R.id.tagged_scaled_check);
 					boolean tookSample = tookSampleChbx.isChecked();
 					fish.setTookSample(tookSample);
