@@ -1,18 +1,18 @@
 package ca.acadiau.cs.comp4583.fish;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-import ca.acadiau.cs.comp4583.fish.data.FishingSession;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.view.Menu;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.view.View;
+import ca.acadiau.cs.comp4583.fish.data.FishingSession;
 
 public class NewSessionActivity extends Activity {
 
@@ -22,13 +22,11 @@ public class NewSessionActivity extends Activity {
 		setContentView(R.layout.new_session);
 		 final Button new_session_button = (Button) findViewById(R.id.submit_new_session_data_button);
 		 final Spinner location_spinner = (Spinner) findViewById(R.id.location_text_spinner);
-		 
-      	 ArrayList<String> location_options = new ArrayList<String>();
-    	 location_options.add("Bridgewater");
-		 location_options.add("Wolfville");	  
+
+	     List<String> locations = Arrays.asList(getResources().getStringArray(R.array.locations));
 		 
 		 ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                 android.R.layout.simple_spinner_item, location_options);
+                 android.R.layout.simple_spinner_item, locations);
                  dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                  location_spinner.setAdapter(dataAdapter);
                  
