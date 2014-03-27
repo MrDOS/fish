@@ -4,7 +4,17 @@
     android:layout_margin="10dp" >
 
     <TextView
+        android:id="@+id/warning_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="This is a warning"
+        android:visibility="gone"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
         android:id="@+id/location_text"
+        android:layout_below="@+id/warning_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -13,15 +23,15 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Spinner
-       android:id="@+id/location_text_spinner"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignParentLeft="true"
-       android:layout_alignParentRight="true"
-       android:layout_below="@+id/location_text"
-       android:background="@android:drawable/btn_dropdown"
-       android:ems="10"
-       android:spinnerMode="dropdown" />
+        android:id="@+id/location_text_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/location_text"
+        android:background="@android:drawable/btn_dropdown"
+        android:ems="10"
+        android:spinnerMode="dropdown" />
 
     <EditText
         android:id="@+id/num_anglers_text_edit"
@@ -49,8 +59,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/num_rods_text"
-        android:ems="10" 
-        android:inputType="number"/>
+        android:ems="10"
+        android:inputType="number" />
 
     <CheckBox
         android:id="@+id/checkBox1"
@@ -76,8 +86,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignRight="@+id/num_anglers_text_edit"
         android:layout_below="@+id/num_catches_text"
-        android:ems="10" 
-        android:inputType="text"/>
+        android:ems="10"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/num_fishes_text"
@@ -140,8 +150,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/end_time_text"
-        android:ems="10" 
-        android:inputType=""/>
+        android:ems="10"
+        android:inputType="" />
 
     <Button
         android:id="@+id/complete_session_button"

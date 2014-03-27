@@ -30,5 +30,13 @@
     <string name="submit_fish_button_text">Submit Fish</string>
     <string name="complete_session_button">End Session</string>
     <string name="save_changes_button_text">Save</string>
+    <string name="species_text_text">Species</string>
+    <string name="tagged_text_text">Tagged</string>
+    <string name="tagged_id_text_text">Tag ID</string>
+    <string name="tagged_colour_text_text">Colour</string>
+    <string name="tagged_scale_text_text">Scale Sample</string>
+    <string name="fish_length_text_text">Fish Length</string>
+    <string name="fish_condition_text_text">Fish Caught Condition</string>
+	<string name="fish_release_condition_text_text">Fish Release Condition</string>    
 
 </resources>
