@@ -22,10 +22,10 @@ public interface SessionStorageProvider
     public boolean isProviderAvailable();
 
     /**
-     * Submit a session to remote, persistent storage.
+     * Submit a set of sessions to remote, persistent storage.
      * 
-     * @param session the finished session
+     * @param sessions the finished sessions
      * @throws IOException in the event of a failure during submission
      */
-    public void submitSession(List<FishingSession> session) throws IOException;
+    public void submitSessions(List<FishingSession> sessions) throws IOException;
 }

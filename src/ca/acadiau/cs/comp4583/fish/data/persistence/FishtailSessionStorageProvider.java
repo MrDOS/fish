@@ -63,7 +63,7 @@ public class FishtailSessionStorageProvider implements SessionStorageProvider
     }
 
     @Override
-    public void submitSession(List<FishingSession> sessions) throws IOException
+    public void submitSessions(List<FishingSession> sessions) throws IOException
     {
         /* First, we must serialize the sessions to JSON. */
         String json = new Gson().toJson(sessions, new TypeToken<List<FishingSession>>() {}.getType());

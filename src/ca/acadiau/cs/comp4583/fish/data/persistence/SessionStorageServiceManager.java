@@ -1,6 +1,5 @@
 package ca.acadiau.cs.comp4583.fish.data.persistence;
 
-import ca.acadiau.cs.comp4583.fish.data.Fish;
 import ca.acadiau.cs.comp4583.fish.data.FishException;
 import ca.acadiau.cs.comp4583.fish.data.FishingSession;
 
@@ -13,18 +12,14 @@ import ca.acadiau.cs.comp4583.fish.data.FishingSession;
 public class SessionStorageServiceManager
 {
     /**
-     * Enqueue a session for persistant storage. Does not necessarily store the
-     * session immediately; it may be held until network access is available.
-     * Fish in submitted sessions will be validated. In the event of a
-     * validation error, a {@link FishException} is thrown.
+     * Convenience wrapper around submission to the session storage service.
      * 
+     * @see SessionStorageService#submitSession(FishingSession)
      * @param session the session to be stored
      * @throws FishException if a validation error occurs with one of the fish
      */
     public void submitSession(FishingSession session) throws FishException
     {
-        session.validate(true);
-
         /* TODO: Bind service, submit session. */
     }
 }

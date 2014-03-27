@@ -22,9 +22,9 @@ public class MockSessionStorageProvider implements SessionStorageProvider
     }
 
     @Override
-    public void submitSession(List<FishingSession> session)
+    public void submitSessions(List<FishingSession> sessions)
     {
-        this.sessions.addAll(session);
+        this.sessions.addAll(sessions);
     }
 
     /**
