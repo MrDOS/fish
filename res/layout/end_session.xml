@@ -125,15 +125,6 @@
         android:layout_toRightOf="@+id/num_catches_text_edit"
         android:text="@string/estimate" />
 
-    <EditText
-        android:id="@+id/num_fishes_text_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/num_fishes_text"
-        android:layout_toLeftOf="@+id/CheckBox02"
-        android:ems="10"
-        android:inputType="text" />
-
     <TextView
         android:id="@+id/end_time_text"
         android:layout_width="wrap_content"
@@ -168,5 +159,18 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:text="@string/back_session" />
+
+    <EditText
+        android:id="@+id/num_fishes_text_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/num_fishes_text"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/CheckBox02"
+        android:ems="10"
+        android:inputType="text" />
+
+        
+
 
 </RelativeLayout>
