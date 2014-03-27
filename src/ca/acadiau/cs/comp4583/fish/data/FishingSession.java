@@ -14,8 +14,9 @@ public class FishingSession implements Serializable
     private static final long serialVersionUID = 1L;
 
     private String username;
-    private double latitude;
-    private double longitude;
+    private Double latitude;
+    private Double longitude;
+    private String locationName;
     private long startDate;
     private long endDate;
     private int anglers;
@@ -37,7 +38,7 @@ public class FishingSession implements Serializable
      * @param anglers the number of other anglers in the area
      * @param lines the number of lines used by the session party
      */
-    public FishingSession(String username, double latitude, double longitude,
+    public FishingSession(String username, Double latitude, Double longitude,
             long startDate, long endDate, int anglers, int lines)
     {
         super();
@@ -69,35 +70,64 @@ public class FishingSession implements Serializable
     }
 
     /**
+     * Set the latitude of the location at which the session occurred. Setting
+     * this property will set the location name to null.
+     * 
      * @param latitude the location at which the session occurred
      */
-    public void setLatitude(double latitude)
+    public void setLatitude(Double latitude)
     {
         this.latitude = latitude;
+        this.locationName = null;
     }
 
     /**
      * @return the location at which the session occurred
      */
-    public double getLatitude()
+    public Double getLatitude()
     {
         return this.latitude;
     }
 
     /**
+     * Set the longitude of the location at which the session occurred. Setting
+     * this property will set the location name to null.
+     * 
      * @param location the location at which the session occurred
      */
-    public void setLongitude(double longitude)
+    public void setLongitude(Double longitude)
     {
         this.longitude = longitude;
+        this.locationName = null;
     }
 
     /**
      * @return the location at which the session occurred
      */
-    public double getLongitude()
+    public Double getLongitude()
     {
         return this.longitude;
+    }
+
+    /**
+     * Set the name of the location. Setting this property will set the latitude
+     * and longitude to null.
+     * 
+     * @param locationName the name of the location
+     */
+    public void setLocationName(String locationName)
+    {
+        this.latitude = null;
+        this.longitude = null;
+        this.locationName = locationName;
+    }
+
+    /**
+     * @return the name of the location
+     */
+    public String getLocationName()
+    {
+        return this.locationName;
     }
 
     /**
