@@ -9,8 +9,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -54,7 +52,6 @@ public class SessionDataActivity extends Activity {
 
 		int number_of_fish = session.getFish().size();
 		final EditText num_catches_Text = (EditText) findViewById(R.id.num_catches_text_edit);
-		final EditText num_fish_Text = (EditText) findViewById(R.id.num_fishes_text_edit);
 		final CheckBox estimated_catches_chbx = (CheckBox) findViewById(R.id.CheckBox02);
 		estimated_catches_chbx.setChecked(!session.isExactCatches());
 
@@ -63,14 +60,12 @@ public class SessionDataActivity extends Activity {
 			estimated_catches_chbx.setChecked(false);
 		} else
 			num_catches_Text.setText(Integer.toString(session.getCatches()));
-		num_fish_Text.setText(Integer.toString(number_of_fish));
 
 		// System.out.println("CATCHES: " +
 		// Integer.toString(session.getCatches()));
 		final EditText linesText = (EditText) findViewById(R.id.num_rods_text_edit);
 		linesText.setText(Integer.toString(session.getLines()));
 
-		final CheckBox fish_num_edited = (CheckBox) findViewById(R.id.CheckBox01);
 		save_session_button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Intent i = new Intent(getApplicationContext(),
@@ -160,25 +155,6 @@ public class SessionDataActivity extends Activity {
 				i.putExtra("Session", session);
 				startActivity(i);
                 finish();
-
-			}
-		});
-		num_fish_Text.addTextChangedListener(new TextWatcher() {
-			public void afterTextChanged(Editable s) {
-
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence arg0, int arg1,
-					int arg2, int arg3) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void onTextChanged(CharSequence arg0, int arg1, int arg2,
-					int arg3) {
-				fish_num_edited.setChecked(true);
 
 			}
 		});

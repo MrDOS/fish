@@ -94,15 +94,6 @@
             android:inputType="text" />
 
         <TextView
-            android:id="@+id/num_fishes_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/num_catches_text_edit"
-            android:text="@string/num_fish_text_text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <TextView
             android:id="@+id/num_anglers_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,15 +101,6 @@
             android:layout_below="@+id/location_text_spinner"
             android:text="@string/num_anglers_text_text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <CheckBox
-            android:id="@+id/CheckBox01"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/num_fishes_text_edit"
-            android:layout_alignBottom="@+id/num_fishes_text_edit"
-            android:layout_toRightOf="@+id/num_fishes_text_edit"
-            android:text="@string/edited" />
 
         <CheckBox
             android:id="@+id/CheckBox02"
@@ -134,7 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/num_fishes_text_edit"
+            android:layout_below="@+id/num_catches_text_edit"
             android:text="@string/end_time_text_text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -154,16 +136,6 @@
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/end_time_picker"
             android:text="@string/back_session" />
-
-        <EditText
-            android:id="@+id/num_fishes_text_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/num_fishes_text"
-            android:layout_toLeftOf="@+id/CheckBox02"
-            android:ems="10"
-            android:inputType="text" />
 
         <TimePicker
             android:id="@+id/end_time_picker"

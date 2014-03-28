@@ -80,15 +80,6 @@
         android:inputType="text"/>
 
     <TextView
-        android:id="@+id/num_fishes_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/num_catches_text_edit"
-        android:text="@string/num_fish_text_text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
         android:id="@+id/num_anglers_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -98,15 +89,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <CheckBox
-        android:id="@+id/CheckBox01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/num_fishes_text_edit"
-        android:layout_alignBottom="@+id/num_fishes_text_edit"
-        android:layout_toRightOf="@+id/num_fishes_text_edit"
-        android:text="@string/edited" />
-
-    <CheckBox
         android:id="@+id/CheckBox02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -114,16 +96,6 @@
         android:layout_alignBottom="@+id/num_catches_text_edit"
         android:layout_toRightOf="@+id/num_catches_text_edit"
         android:text="@string/estimate" />
-
-    <EditText
-        android:id="@+id/num_fishes_text_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/num_fishes_text"
-        android:layout_toLeftOf="@+id/CheckBox02"
-        android:ems="10"
-        android:inputType="text" />
 
     <Button
         android:id="@+id/submit_new_session_data_button"
