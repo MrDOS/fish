@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="fishtail_endpoint">http://fishtail_hostname/fishtail</string>
+    <string name="fishtail_endpoint">http://nancy.seenet.ca/~scoleman/fishtail/</string>
     <string name="trackmyfish_auth_endpoint">http://www.speciesatrisk.ca/trackmyfish/auth.php</string>
     <string name="trackmyfish_login_failure">Failure communicating with Track My Fish. Is data enabled?</string>
     <string name="trackmyfish_login_rejection">Login details incorrect.</string>

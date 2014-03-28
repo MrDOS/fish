@@ -10,8 +10,10 @@ import java.util.LinkedList;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Binder;
 import android.os.IBinder;
+import ca.acadiau.cs.comp4583.fish.LoginActivity;
 import ca.acadiau.cs.comp4583.fish.R;
 import ca.acadiau.cs.comp4583.fish.data.FishException;
 import ca.acadiau.cs.comp4583.fish.data.FishingSession;
@@ -139,7 +141,16 @@ public class SessionStorageService extends Service
         @Override
         public void run()
         {
-            while (!Thread.interrupted() && this.retries < SubmissionThread.MAX_RETRIES)
+            SharedPreferences preferences = getSharedPreferences(LoginActivity.LOGIN_PREFS, 0);
+            String username = preferences.getString(LoginActivity.LOGIN_PREFS_USERNAME, null);
+
+            /* If we don't know of a valid username, there's not a whole lot
+             * of point in trying to submit sessions.
+             * If the thread has been told to shut down, we need to bail.
+             * If we've reached our retry limit, we need to give up. */
+            while (username != null
+                    && !Thread.interrupted()
+                    && this.retries < SubmissionThread.MAX_RETRIES)
             {
                 if (this.sessions.size() > 0
                         && this.sessionStorageProvider.isProviderAvailable())
@@ -149,6 +160,10 @@ public class SessionStorageService extends Service
                      * submitting the ones we'd already been given. */
                     LinkedList<FishingSession> submissionSessions = new LinkedList<FishingSession>(this.sessions);
                     this.sessions = new LinkedList<FishingSession>();
+
+                    /* We'll try to set our known username on all sessions. */
+                    for (FishingSession session : submissionSessions)
+                        session.setUsername(username);
 
                     try
                     {
