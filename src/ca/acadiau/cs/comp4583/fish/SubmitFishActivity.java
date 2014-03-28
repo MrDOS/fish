@@ -68,15 +68,40 @@ public class SubmitFishActivity extends Activity {
         final CheckBox estimateText = (CheckBox) findViewById(R.id.fish_length_check);
         estimateText.setChecked(true);
 		// =======
+        final Spinner catchConditionSpinner = (Spinner) findViewById(R.id.fish_condition_spinner);
 		final Spinner releaseConditionSpinner = (Spinner) findViewById(R.id.fish_release_condition_spinner);
-		final Spinner catchConditionSpinner = (Spinner) findViewById(R.id.fish_condition_spinner);
 
 		ArrayAdapter<Condition> conditionDataAdapter = new ArrayAdapter<Condition>(
 				this, android.R.layout.simple_spinner_item, Condition.values());
-		conditionDataAdapter
-				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		conditionDataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        catchConditionSpinner.setAdapter(conditionDataAdapter);
 		releaseConditionSpinner.setAdapter(conditionDataAdapter);
-		catchConditionSpinner.setAdapter(conditionDataAdapter);
+		
+        catchConditionSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                /* If the catch condition is "dead", the release condition must
+                 * also be "dead". */
+                if (((Condition) parent.getSelectedItem()).equals(Condition.DEAD))
+                {
+                    releaseConditionSpinner.setEnabled(false);
+                    releaseConditionSpinner.setSelection(parent.getSelectedItemPosition());
+                }
+                /* When re-enabling the release condition spinner, we'll set its
+                 * value to match the catch condition. */
+                else if (!releaseConditionSpinner.isEnabled())
+                {
+                    releaseConditionSpinner.setEnabled(true);
+                    releaseConditionSpinner.setSelection(parent.getSelectedItemPosition());
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+            }
+        });
 		// =======
 		tagged_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
