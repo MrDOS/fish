@@ -77,7 +77,6 @@ public class SessionDataActivity extends Activity {
                 }
                 catch (NumberFormatException e) {
 
-					System.out.println(e.getMessage());
 					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
 							context);
 					alertBuilder
@@ -101,7 +100,6 @@ public class SessionDataActivity extends Activity {
                 }
                 catch (NumberFormatException e) {
 
-					System.out.println(e.getMessage());
 					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
 							context);
 					alertBuilder
@@ -124,7 +122,6 @@ public class SessionDataActivity extends Activity {
                 }
                 catch (NumberFormatException e) {
 
-					System.out.println(e.getMessage());
 					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
 							context);
 					alertBuilder

@@ -80,7 +80,6 @@ public class EndSessionActivity extends Activity {
 							.toString()));
 				} catch (NumberFormatException e) {
 
-					System.out.println(e.getMessage());
 					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
 							EndSessionActivity.this);
 					alertBuilder
@@ -103,7 +102,6 @@ public class EndSessionActivity extends Activity {
 							.toString()));
 				} catch (NumberFormatException e) {
 
-					System.out.println(e.getMessage());
 					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
 							EndSessionActivity.this);
 					alertBuilder
@@ -125,7 +123,6 @@ public class EndSessionActivity extends Activity {
 							.getText().toString()));
 				} catch (NumberFormatException e) {
 
-					System.out.println(e.getMessage());
 					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
 							EndSessionActivity.this);
 					alertBuilder
