@@ -73,8 +73,10 @@ public class SessionDataActivity extends Activity {
 						SubmitFishActivity.class);
                 session.setLocationName(location_spinner.getSelectedItem().toString());
                 session.setAnglers(Integer.valueOf(anglersText.getText().toString()));
+                session.setExactAnglers(!anglersEstimatedChbx.isChecked());
                 session.setLines(Integer.valueOf(linesText.getText().toString()));
                 session.setCatches(Integer.valueOf(num_catches_Text.getText().toString()));
+                session.setExactCatches(!estimated_catches_chbx.isChecked());
 				i.putExtra("Session", session);
 				startActivity(i);
 

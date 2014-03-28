@@ -44,10 +44,14 @@ public class FishingSession implements Serializable
         this.username = null;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.locationName = null;
         this.startDate = startDate;
         this.endDate = endDate;
         this.anglers = anglers;
+        this.exactAnglers = false;
         this.lines = lines;
+        this.catches = 0;
+        this.exactCatches = true;
 
         this.fish = new ArrayList<Fish>();
     }

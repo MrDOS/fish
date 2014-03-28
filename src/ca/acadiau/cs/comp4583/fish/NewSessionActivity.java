@@ -48,15 +48,15 @@ public class NewSessionActivity extends Activity {
             	 int lines = Integer.parseInt(linesText.getText().toString());
             	 Double longitude = null;
             	 Double latitude = null;
-            	 //Long does not have NaN, or Null using MIN_VALUE as that, as it can easily be checked and won't be used.
             	 long start_time = new GregorianCalendar(
             	         startDatePicker.getYear(), startDatePicker.getMonth(), startDatePicker.getDayOfMonth(),
             	         startTimePicker.getCurrentHour(), startTimePicker.getCurrentMinute(), 0).getTimeInMillis() / 1000;
+                /* Long does not have NaN or null. Using MIN_VALUE as default
+                 * value, as it can easily be checked and won't be used. */
             	 long end_time = Long.MIN_VALUE;
             	 FishingSession session = new FishingSession(latitude, longitude, start_time,end_time, anglers, lines);
             	 CheckBox anglerEstimateChbx = (CheckBox) findViewById(R.id.checkBox1);
-            	 boolean anglerEstimate = anglerEstimateChbx.isChecked();
-            	 session.setExactAnglers(!anglerEstimate);
+            	 session.setExactAnglers(!anglerEstimateChbx.isChecked());
             	 session.setLocationName(location_spinner.getSelectedItem().toString());
             	 Intent i = new Intent(getApplicationContext(),SubmitFishActivity.class);
             	 i.putExtra("Session", session);
