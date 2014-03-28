@@ -44,5 +44,9 @@
 	<string name="fish_condition_warning_text_text">Fish COndition Warning</string>
 	<string name="fish_length_warning_text_text">Fish Length Warning</string>
 	<string name="login_warning_text">You need to be logged in before this session will be submitted</string>
+	<string name="login_text_text">Login</string>
+	<string name="pass_text_text">Password</string>
+	<string name="back_from_login_button_text">Back</string>
+	<string name="login_button_text">Login</string>
 
 </resources>
