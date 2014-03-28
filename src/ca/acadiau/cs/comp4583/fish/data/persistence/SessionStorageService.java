@@ -26,12 +26,15 @@ public class SessionStorageService extends Service
     private static final String PERSISTENCE_FILENAME = "persisted_sessions";
 
     private SessionStorageBinder binder = new SessionStorageBinder();
-    private SubmissionThread submissionThread;
+    private SubmissionThread submissionThread = new SubmissionThread();
 
     @Override
     public void onCreate()
     {
-        (this.submissionThread = new SubmissionThread()).start();
+        /* We only want to start the submission thread right away if we've still
+         * got sessions unsubmitted. */
+        if (this.submissionThread.sessions.size() > 0)
+            this.submissionThread.start();
     }
 
     @Override
@@ -68,7 +71,14 @@ public class SessionStorageService extends Service
         {
             session.validate(true);
 
+            /* Add the session to the submission thread queue. */
             SessionStorageService.this.submissionThread.sessions.add(session);
+
+            /* Now that we have something to bother submitting, launch the
+             * thread. It will try for some time to submit the sessions before
+             * giving up. */
+            if (!SessionStorageService.this.submissionThread.isAlive())
+                SessionStorageService.this.submissionThread.start();
         }
     }
 
