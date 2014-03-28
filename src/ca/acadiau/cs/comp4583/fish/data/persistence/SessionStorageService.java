@@ -147,13 +147,14 @@ public class SessionStorageService extends Service
             /* If we don't know of a valid username, there's not a whole lot
              * of point in trying to submit sessions.
              * If the thread has been told to shut down, we need to bail.
+             * If we've run out of things to submit, there's nothing to do.
              * If we've reached our retry limit, we need to give up. */
             while (username != null
                     && !Thread.interrupted()
+                    && this.sessions.size() > 0
                     && this.retries < SubmissionThread.MAX_RETRIES)
             {
-                if (this.sessions.size() > 0
-                        && this.sessionStorageProvider.isProviderAvailable())
+                if (this.sessionStorageProvider.isProviderAvailable())
                 {
                     /* We want to work from a duplicate of the sessions list in
                      * case more session(s) are handed over while we're
@@ -168,14 +169,43 @@ public class SessionStorageService extends Service
                     try
                     {
                         this.sessionStorageProvider.submitSessions(submissionSessions);
+
+                        /* After we've successfully submitted a fish, we can
+                         * nuke the retries counter. No sense in letting it
+                         * potentially affect future submissions to this same
+                         * thread. */
+                        this.retries = 0;
                     }
                     catch (IOException e)
                     {
                         /* If, for whatever reason, we can't submit the
                          * sessions, we'll hold onto them for later. */
                         this.sessions.addAll(submissionSessions);
+                        /* We'll also increment the retry counter. When this
+                         * reaches MAX_RETRIES, the thread will give up and try
+                         * to submit the sessions later. */
+                        this.retries++;
+                    }
+
+                    /* Having successfully submitted sessions -- or not,
+                     * whatever -- we want to make sure the persisted sessions
+                     * are up-to-date. While we foresee this happening whenever
+                     * this thread is interrupted, it doesn't hurt to do it here
+                     * just in case the app is force-stopped. */
+                    try
+                    {
+                        this.persistFishingSessions();
+                    }
+                    catch (IOException e)
+                    {
                     }
                 }
+
+                /* If we've successfully submitted all sessions, we don't have
+                 * to worry about retrying/continuing the loop. The service
+                 * will be restarted for the submission of further sessions. */
+                if (this.sessions.size() == 0)
+                    break;
 
                 try
                 {
@@ -186,23 +216,25 @@ public class SessionStorageService extends Service
                     /* If we've been woken from our slumbers, we need to break
                      * out of the loop, persist any sessions left unsubmitted,
                      * and then die. */
-                    Thread.currentThread().interrupt();
+                    break;
                 }
             }
 
+            /* Whenever the run loop exits, regardless of the reason, we want to
+             * try to stash a copy of unsubmitted sessions in order to retry
+             * submission at a later date. */
             try
             {
                 this.persistFishingSessions();
             }
             catch (IOException e)
             {
-                /* Can't submit? Too bad, so sad. */
+                /* Can't persist them? Too bad, so sad. */
             }
 
-            /* If we're stopping because we've run out of retries, we need to
-             * notify the service that we're giving up. */
-            if (this.retries >= SubmissionThread.MAX_RETRIES)
-                SessionStorageService.this.stopSelf();
+            /* Just in case we're not bailing because we've been told to stop,
+             * we should notify the service that it can shut down too. */
+            SessionStorageService.this.stopSelf();
         }
 
         /**
