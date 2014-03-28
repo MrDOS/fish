@@ -3,6 +3,8 @@ package ca.acadiau.cs.comp4583.fish;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -159,7 +161,30 @@ public class SubmitFishActivity extends Activity {
 				// Condition catchHealth, Condition releaseHealth)
 				EditText lengthText = (EditText) findViewById(R.id.fish_length_text_edit);
 				/* Length is given in cm but must be passed to storage as mm. */
-				int length = (int) (Double.parseDouble(lengthText.getText().toString()) * 100);
+				int length = 0;
+				try
+				{
+					length = (int) (Double.parseDouble(lengthText.getText().toString()) * 100);
+				}
+				catch (NumberFormatException e) {
+
+					System.out.println(e.getMessage());
+					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
+							SubmitFishActivity.this);
+					alertBuilder
+							.setMessage("Length must have a valid number.");
+					alertBuilder.setCancelable(true);
+					alertBuilder.setPositiveButton("Okay",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									dialog.cancel();
+								}
+							});
+					AlertDialog numberAlert = alertBuilder.create();
+					numberAlert.show();
+					return;
+				}
 				Boolean estimate = estimateText.isChecked();
 
 				Species species = (Species) speciesSpinner.getSelectedItem();

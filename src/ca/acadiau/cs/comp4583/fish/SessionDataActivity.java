@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,11 +20,12 @@ import android.widget.Spinner;
 import ca.acadiau.cs.comp4583.fish.data.FishingSession;
 
 public class SessionDataActivity extends Activity {
-
+	Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.session_data);
+		context = this;
 		final Button save_session_button = (Button) findViewById(R.id.save_changes_buttons);
 		final Button back_session_button = (Button) findViewById(R.id.submit_new_session_data_button);
 
@@ -72,10 +76,76 @@ public class SessionDataActivity extends Activity {
 				Intent i = new Intent(getApplicationContext(),
 						SubmitFishActivity.class);
                 session.setLocationName(location_spinner.getSelectedItem().toString());
-                session.setAnglers(Integer.valueOf(anglersText.getText().toString()));
+                try
+                {
+                	session.setAnglers(Integer.valueOf(anglersText.getText().toString()));
+                }
+                catch (NumberFormatException e) {
+
+					System.out.println(e.getMessage());
+					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
+							context);
+					alertBuilder
+							.setMessage("Number of Anglers must have a valid number.");
+					alertBuilder.setCancelable(true);
+					alertBuilder.setPositiveButton("Okay",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									dialog.cancel();
+								}
+							});
+					AlertDialog numberAlert = alertBuilder.create();
+					numberAlert.show();
+					return;
+				}
                 session.setExactAnglers(!anglersEstimatedChbx.isChecked());
-                session.setLines(Integer.valueOf(linesText.getText().toString()));
-                session.setCatches(Integer.valueOf(num_catches_Text.getText().toString()));
+                try 
+                {
+                	session.setLines(Integer.valueOf(linesText.getText().toString()));
+                }
+                catch (NumberFormatException e) {
+
+					System.out.println(e.getMessage());
+					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
+							context);
+					alertBuilder
+							.setMessage("Number of Rods must have a valid number.");
+					alertBuilder.setCancelable(true);
+					alertBuilder.setPositiveButton("Okay",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									dialog.cancel();
+								}
+							});
+					AlertDialog numberAlert = alertBuilder.create();
+					numberAlert.show();
+					return;
+				}
+                try
+                {
+                	session.setCatches(Integer.valueOf(num_catches_Text.getText().toString()));
+                }
+                catch (NumberFormatException e) {
+
+					System.out.println(e.getMessage());
+					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
+							context);
+					alertBuilder
+							.setMessage("Number of Catches must have a valid number.");
+					alertBuilder.setCancelable(true);
+					alertBuilder.setPositiveButton("Okay",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									dialog.cancel();
+								}
+							});
+					AlertDialog numberAlert = alertBuilder.create();
+					numberAlert.show();
+					return;
+				}
                 session.setExactCatches(!estimated_catches_chbx.isChecked());
 				i.putExtra("Session", session);
 				startActivity(i);
