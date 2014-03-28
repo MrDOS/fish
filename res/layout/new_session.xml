@@ -43,21 +43,13 @@
         android:ems="10"
         android:inputType="number" />
 
-    <TextView
-        android:id="@+id/date_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/location_text_spinner"
-        android:text="@string/date_text_text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/start_time_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/date_text_edit"
+        android:layout_below="@+id/location_text_spinner"
         android:text="@string/start_time_text_text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -89,16 +81,6 @@
         android:ems="10" 
         android:inputType="number"/>
 
-    <EditText
-        android:id="@+id/date_text_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/date_text"
-        android:ems="10" 
-        android:inputType="date"/>
-
     <Button
         android:id="@+id/submit_new_session_data_button"
         android:layout_width="wrap_content"
@@ -114,5 +96,7 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/num_anglers_text"
         android:text="@string/estimate" />
+
+
 
 </RelativeLayout>

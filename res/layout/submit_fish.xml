@@ -7,7 +7,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp" >
-        
 
         <Button
             android:id="@+id/edit_session_button"
@@ -38,6 +37,8 @@
             android:id="@+id/species_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_below="@+id/species_text"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown" />
@@ -55,71 +56,81 @@
             android:id="@+id/tagged_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_below="@+id/tagged_text"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown" />
 
         <RelativeLayout
-            android:id="@+id/tagged_yes"
+            android:id="@+id/tagged_stuff"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_below="@+id/tagged_spinner"
-            android:layout_margin="10dp" 
-            android:visibility="gone">
+            android:layout_margin="10dp"
+            android:visibility="visible" >
 
-            <TextView
-                android:id="@+id/tagged_id_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tagged_id_text_text"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+            <RelativeLayout
+                android:id="@+id/tagged_yes"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp"
+                android:visibility="visible" >
 
-            <EditText
-                android:id="@+id/tagged_id_text_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tagged_id_text" />
+                <TextView
+                    android:id="@+id/tagged_id_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tagged_id_text_text"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <TextView
-                android:id="@+id/tagged_colour_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tagged_id_text_edit"
-                android:text="@string/tagged_colour_text_text"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                <EditText
+                    android:id="@+id/tagged_id_text_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tagged_id_text" />
 
-            <Spinner
-                android:id="@+id/tagged_colour_spinner"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tagged_colour_text"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown" />
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/tagged_colour_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tagged_id_text_edit"
+                    android:text="@string/tagged_colour_text_text"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <RelativeLayout
-            android:id="@+id/tagged_no"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_below="@+id/tagged_spinner"
-            android:layout_margin="10dp" 
-            android:visibility="gone">
+                <Spinner
+                    android:id="@+id/tagged_colour_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tagged_colour_text"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown" />
+            </RelativeLayout>
 
-            
-            <CheckBox
-            	android:id="@+id/tagged_scaled_check"
-            	android:layout_width="wrap_content"
-            	android:layout_height="wrap_content"
-            	android:layout_alignParentRight="true"
-            	android:text="@string/tagged_scale_text_text" />
-            
+            <RelativeLayout
+                android:id="@+id/tagged_no"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp"
+                android:visibility="visible" >
+
+                <CheckBox
+                    android:id="@+id/tagged_scaled_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tagged_scale_text_text" />
+            </RelativeLayout>
         </RelativeLayout>
 
         <TextView
             android:id="@+id/fish_length_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tagged_yes"
+            android:layout_below="@+id/tagged_stuff"
             android:text="@string/fish_length_text_text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -153,6 +164,8 @@
             android:id="@+id/fish_condition_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+       		android:layout_alignParentRight="true"
             android:layout_below="@+id/fish_condition_text"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown" />
@@ -169,6 +182,8 @@
             android:id="@+id/fish_release_condition_spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+       		android:layout_alignParentRight="true"
             android:layout_below="@+id/fish_release_condition_text"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown" />
@@ -178,8 +193,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
             android:layout_below="@+id/fish_release_condition_spinner"
             android:text="@string/submit_fish_button_text" />
+
+        <Button
+            android:id="@+id/save_fish_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/fish_release_condition_spinner"
+            android:text="@string/save_fish_button_text"
+            android:visibility="gone" />
     </RelativeLayout>
 
 </ScrollView>
