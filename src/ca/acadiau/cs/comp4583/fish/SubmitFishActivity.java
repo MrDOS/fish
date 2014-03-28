@@ -149,7 +149,6 @@ public class SubmitFishActivity extends Activity {
 						SessionDataActivity.class);
 				i.putExtra("Session", session);
 				startActivity(i);
-                finish();
 
 			}
 		});
