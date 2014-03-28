@@ -11,6 +11,7 @@
     <string name="spacer">             </string>
     <string name="date_text_text">Date</string>
     <string name="start_time_text_text">Start Time</string>
+    <string name="start_date_text_text">Start Date</string>
     <string name="end_time_text_text">End Time</string>
     <string name="total_fish_caught_text_text">Total Fish Caught</string>
     <string name="num_anglers_text_text">Number of Anglers</string>
@@ -37,6 +38,11 @@
     <string name="tagged_scale_text_text">Scale Sample</string>
     <string name="fish_length_text_text">Fish Length</string>
     <string name="fish_condition_text_text">Fish Caught Condition</string>
-	<string name="fish_release_condition_text_text">Fish Release Condition</string>    
+	<string name="fish_release_condition_text_text">Fish Release Condition</string>  
+	<string name="save_fish_button_text">Save Fish</string>
+	<string name="colour_warning_text_text">Colour Warning</string>
+	<string name="fish_condition_warning_text_text">Fish COndition Warning</string>
+	<string name="fish_length_warning_text_text">Fish Length Warning</string>
+	<string name="login_warning_text">You need to be logged in before this session will be submitted</string>
 
 </resources>
