@@ -171,22 +171,11 @@ public class FishingSession implements Serializable
     }
 
     /**
-     * @return the number of lines used by the session party
+     * @param anglers the number of other anglers in the area
      */
-    public int getLines()
+    public void setAnglers(int anglers)
     {
-        return this.lines;
-    }
-
-    /**
-     * Access the array list containing fish. Manipulating this list adds or
-     * removes fish from the session.
-     * 
-     * @return the list containing fish
-     */
-    public ArrayList<Fish> getFish()
-    {
-        return this.fish;
+        this.anglers = anglers;
     }
 
     /**
@@ -205,6 +194,22 @@ public class FishingSession implements Serializable
     public void setExactAnglers(boolean exactAnglers)
     {
         this.exactAnglers = exactAnglers;
+    }
+
+    /**
+     * @return the number of lines used by the session party
+     */
+    public int getLines()
+    {
+        return this.lines;
+    }
+
+    /**
+     * @param lines the number of lines used by the session party
+     */
+    public void setLines(int lines)
+    {
+        this.lines = lines;
     }
 
     /**
@@ -237,6 +242,17 @@ public class FishingSession implements Serializable
     public void setExactCatches(boolean exactCatches)
     {
         this.exactCatches = exactCatches;
+    }
+
+    /**
+     * Access the array list containing fish. Manipulating this list adds or
+     * removes fish from the session.
+     * 
+     * @return the list containing fish
+     */
+    public ArrayList<Fish> getFish()
+    {
+        return this.fish;
     }
 
     /**

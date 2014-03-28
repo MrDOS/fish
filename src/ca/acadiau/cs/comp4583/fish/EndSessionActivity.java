@@ -72,23 +72,20 @@ public class EndSessionActivity extends Activity {
         		//-----------------
 		  complete_session_button.setOnClickListener(new View.OnClickListener() {
              public void onClick(View v) {
-		 
-            	  	session.setLocationName(location_spinner.getSelectedItem().toString());
-                	//No setAnglers method
-          //     	session.setAnglers(anglersText.getText());
-                	//No setLines method
-            //    	session.setLines(linesText.getText());
-                	session.setCatches(Integer.parseInt(num_catches_Text.getText().toString()));
-                    //TODO Something with EndTime
+                session.setLocationName(location_spinner.getSelectedItem().toString());
+                session.setAnglers(Integer.valueOf(anglersText.getText().toString()));
+                session.setLines(Integer.valueOf(linesText.getText().toString()));
+                session.setCatches(Integer.valueOf(num_catches_Text.getText().toString()));
+                // TODO Something with EndTime
 
-                	try
-                    {
-                        new SessionStorageServiceManager().submitSession(session);
-                        finish();
-                    }
-                    catch (FishException e)
-                    {
-                    }
+                try
+                {
+                    new SessionStorageServiceManager().submitSession(session);
+                    finish();
+                }
+                catch (FishException e)
+                {
+                }
              }
 		 });
 		  back_session_button.setOnClickListener(new View.OnClickListener() {

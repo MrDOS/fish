@@ -71,14 +71,10 @@ public class SessionDataActivity extends Activity {
 			public void onClick(View v) {
 				Intent i = new Intent(getApplicationContext(),
 						SubmitFishActivity.class);
-				session.setLocationName(location_spinner.getSelectedItem()
-						.toString());
-				// No setAnglers method
-				// session.setAnglers(anglersText.getText());
-				// No setLines method
-				// session.setLines(linesText.getText());
-				session.setCatches(Integer.parseInt(num_catches_Text.getText()
-						.toString()));
+                session.setLocationName(location_spinner.getSelectedItem().toString());
+                session.setAnglers(Integer.valueOf(anglersText.getText().toString()));
+                session.setLines(Integer.valueOf(linesText.getText().toString()));
+                session.setCatches(Integer.valueOf(num_catches_Text.getText().toString()));
 				i.putExtra("Session", session);
 				startActivity(i);
 
