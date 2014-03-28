@@ -46,7 +46,7 @@ public class NewSessionActivity extends Activity {
             	 //Long does not have NaN, or Null using MIN_VALUE as that, as it can easily be checked and won't be used.
             	 long start_time = Long.MIN_VALUE;
             	 long end_time = Long.MIN_VALUE;
-            	 FishingSession session = new FishingSession("", latitude, longitude, start_time,end_time, anglers, lines);
+            	 FishingSession session = new FishingSession(latitude, longitude, start_time,end_time, anglers, lines);
             	 CheckBox anglerEstimateChbx = (CheckBox) findViewById(R.id.checkBox1);
             	 boolean anglerEstimate = anglerEstimateChbx.isChecked();
             	 session.setExactAnglers(!anglerEstimate);

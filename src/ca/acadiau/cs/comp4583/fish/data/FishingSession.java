@@ -30,7 +30,6 @@ public class FishingSession implements Serializable
     /**
      * Set up the session.
      * 
-     * @param username the associated TrackMyFish username
      * @param latitude the lat in which the fish was caught
      * @param logitude the long in which the fish was caught
      * @param startDate the start date of the session
@@ -38,11 +37,11 @@ public class FishingSession implements Serializable
      * @param anglers the number of other anglers in the area
      * @param lines the number of lines used by the session party
      */
-    public FishingSession(String username, Double latitude, Double longitude,
+    public FishingSession(Double latitude, Double longitude,
             long startDate, long endDate, int anglers, int lines)
     {
         super();
-        this.username = username;
+        this.username = null;
         this.latitude = latitude;
         this.longitude = longitude;
         this.startDate = startDate;
