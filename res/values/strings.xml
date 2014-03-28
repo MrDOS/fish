@@ -7,6 +7,7 @@
     <string name="provider_error">Couldn\'t access network- or Wi-Fi-based location information!</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="ok">OK</string>
     <string name="begin_session">Begin New Session</string>
     <string name="location_text_text">Location</string>
     <string name="spacer"></string>
@@ -45,6 +46,8 @@
     <string name="fish_condition_warning_text_text">Fish COndition Warning</string>
     <string name="fish_length_warning_text_text">Fish Length Warning</string>
     <string name="login_warning_text">You need to be logged in before this session will be submitted</string>
+    <string name="login_dialog_title">Logging in&#8230;</string>
+    <string name="login_dialog_message">Please wait while logging in.</string>
     <string name="login_text_text">Login</string>
     <string name="pass_text_text">Password</string>
     <string name="back_from_login_button_text">Back</string>

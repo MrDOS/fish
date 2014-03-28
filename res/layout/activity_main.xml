@@ -16,4 +16,12 @@
         android:layout_centerVertical="true"
         android:text="@string/begin_session" />
 
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/begin_session_button"
+        android:layout_centerHorizontal="true"
+        android:text="@string/login_button_text" />
+
 </RelativeLayout>
