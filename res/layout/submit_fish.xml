@@ -109,6 +109,15 @@
                     android:layout_below="@+id/tagged_colour_text"
                     android:background="@android:drawable/btn_dropdown"
                     android:spinnerMode="dropdown" />
+
+                <TextView
+                    android:id="@+id/colour_warning_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tagged_colour_spinner"
+                    android:text="@string/colour_warning_text_text"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:visibility="gone" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -153,10 +162,19 @@
             android:text="@string/estimate" />
 
         <TextView
-            android:id="@+id/fish_condition_text"
+            android:id="@+id/fish_length_warning_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fish_length_text_edit"
+            android:text="@string/fish_length_warning_text_text"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/fish_condition_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fish_length_warning_text"
             android:text="@string/fish_condition_text_text"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -165,7 +183,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-       		android:layout_alignParentRight="true"
+            android:layout_alignParentRight="true"
             android:layout_below="@+id/fish_condition_text"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown" />
@@ -183,7 +201,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-       		android:layout_alignParentRight="true"
+            android:layout_alignParentRight="true"
             android:layout_below="@+id/fish_release_condition_text"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown" />
@@ -192,10 +210,22 @@
             android:id="@+id/submit_fish_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
             android:layout_below="@+id/fish_release_condition_spinner"
             android:text="@string/submit_fish_button_text" />
+
+        <Button
+            android:id="@+id/save_fish_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/fish_release_condition_spinner"
+            android:text="@string/save_fish_button_text"
+            android:visibility="gone" />
+        
+       
     </RelativeLayout>
 
 </ScrollView>

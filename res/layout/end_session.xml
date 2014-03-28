@@ -1,6 +1,11 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content" >
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp" >
 
     <TextView
@@ -8,17 +13,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:text="This is a warning"
-        android:visibility="gone"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="@string/login_warning_text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/location_text"
-        android:layout_below="@+id/warning_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/warning_text"
         android:text="@string/location_text_text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -134,15 +138,6 @@
         android:text="@string/end_time_text_text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <EditText
-        android:id="@+id/end_time_text_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/end_time_text"
-        android:ems="10"
-        android:inputType="" />
 
     <Button
         android:id="@+id/complete_session_button"
@@ -157,6 +152,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_below="@+id/end_time_picker"
         android:layout_alignParentLeft="true"
         android:text="@string/back_session" />
 
@@ -164,13 +160,20 @@
         android:id="@+id/num_fishes_text_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/num_fishes_text"
         android:layout_alignParentLeft="true"
+        android:layout_below="@+id/num_fishes_text"
         android:layout_toLeftOf="@+id/CheckBox02"
         android:ems="10"
         android:inputType="text" />
 
-        
 
+    <TimePicker
+        android:id="@+id/end_time_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/end_time_text" />
 
 </RelativeLayout>
+</ScrollView>
