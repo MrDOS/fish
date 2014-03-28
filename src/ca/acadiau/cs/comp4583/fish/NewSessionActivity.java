@@ -43,13 +43,16 @@ public class NewSessionActivity extends Activity {
             	 int anglers = Integer.parseInt(anglersText.getText().toString());
             	 EditText linesText = (EditText) findViewById(R.id.num_rods_text_edit);
             	 int lines = Integer.parseInt(linesText.getText().toString());
-            	//FishingSession(Location location, Date startDate, Date endDate, int anglers, int lines);
-            	 //No Username (set to empty string), lattitude and logitude set to 1 for now
-            	 //End and start date also set to 1 until code is written to parse the editText for date, 
-            	 FishingSession session = new FishingSession("", 1, 1, 1,1, anglers, lines);
+            	 double longitude = Double.NaN;
+            	 double latitude = Double.NaN;
+            	 //Long does not have NaN, or Null using MIN_VALUE as that, as it can easily be checked and won't be used.
+            	 long start_time = Long.MIN_VALUE;
+            	 long end_time = Long.MIN_VALUE;
+            	 FishingSession session = new FishingSession("", latitude, longitude, start_time,end_time, anglers, lines);
             	 CheckBox anglerEstimateChbx = (CheckBox) findViewById(R.id.checkBox1);
             	 boolean anglerEstimate = anglerEstimateChbx.isChecked();
             	 session.setExactAnglers(!anglerEstimate);
+            	 session.setLocationName(location_spinner.getSelectedItem().toString());
             	 Intent i = new Intent(getApplicationContext(),SubmitFishActivity.class);
             	 i.putExtra("Session", session);
             	 startActivity(i);

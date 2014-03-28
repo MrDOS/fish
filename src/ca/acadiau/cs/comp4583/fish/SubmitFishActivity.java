@@ -50,7 +50,7 @@ public class SubmitFishActivity extends Activity {
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		tagged_spinner.setAdapter(dataAdapter);
 
-		System.out.println("Test");
+
 		// =======
 		final Spinner speciesSpinner = (Spinner) findViewById(R.id.species_spinner);
 		ArrayList<String> species_options = new ArrayList<String>();
@@ -154,7 +154,7 @@ public class SubmitFishActivity extends Activity {
 				// Condition catchHealth, Condition releaseHealth)
 				String speciesName = speciesSpinner.getSelectedItem()
 						.toString();
-				EditText lengthText = (EditText) findViewById(R.id.species_spinner);
+				EditText lengthText = (EditText) findViewById(R.id.fish_length_text_edit);
 				int length = Integer.parseInt(lengthText.getText().toString());
 				CheckBox estimateText = (CheckBox) findViewById(R.id.fish_length_check);
 				Boolean estimate = estimateText.isChecked();

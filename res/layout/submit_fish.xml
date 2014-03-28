@@ -8,20 +8,12 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp" >
         
-        <TextView
-            android:id="@+id/warning_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text="This is a warning"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <Button
             android:id="@+id/edit_session_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/warning_text"
             android:layout_alignParentTop="true"
             android:text="@string/edit_session_button_text" />
 
@@ -29,7 +21,6 @@
             android:id="@+id/end_session_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/warning_text"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:text="@string/end_session_button_text" />
