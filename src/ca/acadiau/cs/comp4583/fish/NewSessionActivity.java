@@ -41,8 +41,8 @@ public class NewSessionActivity extends Activity {
             	 int anglers = Integer.parseInt(anglersText.getText().toString());
             	 EditText linesText = (EditText) findViewById(R.id.num_rods_text_edit);
             	 int lines = Integer.parseInt(linesText.getText().toString());
-            	 double longitude = Double.NaN;
-            	 double latitude = Double.NaN;
+            	 Double longitude = null;
+            	 Double latitude = null;
             	 //Long does not have NaN, or Null using MIN_VALUE as that, as it can easily be checked and won't be used.
             	 long start_time = Long.MIN_VALUE;
             	 long end_time = Long.MIN_VALUE;
