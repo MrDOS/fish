@@ -2,7 +2,7 @@
 <resources>
 
     <string name="species_atlantic_sturgeon">Atlantic sturgeon</string>
-    <string name="species_atlantic_salmon">Atlantic Salmon</string>
+    <string name="species_atlantic_salmon">Atlantic salmon</string>
     <string name="species_dogfish">Dogfish</string>
     <string name="species_skate">Skate</string>
     <string name="species_striped_bass">Striped bass</string>

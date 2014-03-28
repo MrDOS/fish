@@ -1,10 +1,7 @@
-package cs.acadiau.comp4583.fish.data;
+package ca.acadiau.cs.comp4583.fish.data;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.ArrayList;
-
-import android.location.Location;
 
 /**
  * A fishing session.
@@ -16,8 +13,10 @@ public class FishingSession implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
-    private double latitude;
-    private double longitude;
+    private String username;
+    private Double latitude;
+    private Double longitude;
+    private String locationName;
     private long startDate;
     private long endDate;
     private int anglers;
@@ -38,49 +37,100 @@ public class FishingSession implements Serializable
      * @param anglers the number of other anglers in the area
      * @param lines the number of lines used by the session party
      */
-    public FishingSession(double latitude, double longitude, long startDate, long endDate, int anglers, int lines)
+    public FishingSession(Double latitude, Double longitude,
+            long startDate, long endDate, int anglers, int lines)
     {
         super();
+        this.username = null;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.locationName = null;
         this.startDate = startDate;
         this.endDate = endDate;
         this.anglers = anglers;
+        this.exactAnglers = false;
         this.lines = lines;
+        this.catches = 0;
+        this.exactCatches = true;
 
         this.fish = new ArrayList<Fish>();
     }
 
     /**
+     * @param username the associated TrackMyFish username
+     */
+    public void setUsername(String username)
+    {
+        this.username = username;
+    }
+
+    /**
+     * @return the associated TrackMyFish username
+     */
+    public String getUsername()
+    {
+        return this.username;
+    }
+
+    /**
+     * Set the latitude of the location at which the session occurred. Setting
+     * this property will set the location name to null.
+     * 
      * @param latitude the location at which the session occurred
      */
-    public void setLatitude(double latitude)
+    public void setLatitude(Double latitude)
     {
         this.latitude = latitude;
+        this.locationName = null;
     }
 
     /**
      * @return the location at which the session occurred
      */
-    public double getLatitude()
+    public Double getLatitude()
     {
         return this.latitude;
     }
-    
+
     /**
+     * Set the longitude of the location at which the session occurred. Setting
+     * this property will set the location name to null.
+     * 
      * @param location the location at which the session occurred
      */
-    public void setLongitude(double longitude)
+    public void setLongitude(Double longitude)
     {
         this.longitude = longitude;
+        this.locationName = null;
     }
 
     /**
      * @return the location at which the session occurred
      */
-    public double getLongitude()
+    public Double getLongitude()
     {
         return this.longitude;
+    }
+
+    /**
+     * Set the name of the location. Setting this property will set the latitude
+     * and longitude to null.
+     * 
+     * @param locationName the name of the location
+     */
+    public void setLocationName(String locationName)
+    {
+        this.latitude = null;
+        this.longitude = null;
+        this.locationName = locationName;
+    }
+
+    /**
+     * @return the name of the location
+     */
+    public String getLocationName()
+    {
+        return this.locationName;
     }
 
     /**
@@ -124,22 +174,11 @@ public class FishingSession implements Serializable
     }
 
     /**
-     * @return the number of lines used by the session party
+     * @param anglers the number of other anglers in the area
      */
-    public int getLines()
+    public void setAnglers(int anglers)
     {
-        return this.lines;
-    }
-
-    /**
-     * Access the array list containing fish. Manipulating this list adds or
-     * removes fish from the session.
-     * 
-     * @return the list containing fish
-     */
-    public ArrayList<Fish> getFish()
-    {
-        return this.fish;
+        this.anglers = anglers;
     }
 
     /**
@@ -161,13 +200,29 @@ public class FishingSession implements Serializable
     }
 
     /**
+     * @return the number of lines used by the session party
+     */
+    public int getLines()
+    {
+        return this.lines;
+    }
+
+    /**
+     * @param lines the number of lines used by the session party
+     */
+    public void setLines(int lines)
+    {
+        this.lines = lines;
+    }
+
+    /**
      * @return catches the given number of fish caught
      */
     public int getCatches()
     {
         return catches;
     }
-    
+
     /**
      * @param catches the number of fish caught
      */
@@ -190,5 +245,33 @@ public class FishingSession implements Serializable
     public void setExactCatches(boolean exactCatches)
     {
         this.exactCatches = exactCatches;
+    }
+
+    /**
+     * Access the array list containing fish. Manipulating this list adds or
+     * removes fish from the session.
+     * 
+     * @return the list containing fish
+     */
+    public ArrayList<Fish> getFish()
+    {
+        return this.fish;
+    }
+
+    /**
+     * Validate all fish within the session. This is equivalent to iterating
+     * over all fish and manually calling {@link Fish#validate(boolean)} on each
+     * one.
+     * 
+     * @param onlyFatal only throw an exception upon fatal validation errors
+     * @return true
+     * @throws FishException in the event of improper data
+     */
+    public boolean validate(boolean onlyFatal) throws FishException
+    {
+        for (Fish fish : this.fish)
+            fish.validate(onlyFatal);
+
+        return true;
     }
 }

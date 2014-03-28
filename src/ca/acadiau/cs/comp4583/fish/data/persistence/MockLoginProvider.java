@@ -1,7 +1,8 @@
-package cs.acadiau.comp4583.fish.data.persistence;
+package ca.acadiau.cs.comp4583.fish.data.persistence;
 
-import cs.acadiau.comp4583.fish.data.AuthenticationException;
-import cs.acadiau.comp4583.fish.data.User;
+import org.apache.http.auth.AuthenticationException;
+
+import ca.acadiau.cs.comp4583.fish.data.User;
 
 /**
  * A login provider which approves all credentials.
@@ -9,7 +10,7 @@ import cs.acadiau.comp4583.fish.data.User;
  * @since 1.0.0
  * @author Samuel Coleman <105709c@acadiau.ca>
  */
-public class MockLoginProvider implements LoginProvider
+public class MockLoginProvider extends AbstractLoginProvider
 {
     /**
      * Authenticate any set of user credentials.
@@ -20,8 +21,8 @@ public class MockLoginProvider implements LoginProvider
      * @throws AuthenticationException if the credentials are rejected
      */
     @Override
-    public User validate(String username, String password) throws AuthenticationException
+    public void validate(String username, String password)
     {
-        return new User();
+        this.notifyLoginSuccess(new User(username));
     }
 }

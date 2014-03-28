@@ -1,8 +1,8 @@
-package cs.acadiau.comp4583.fish.data;
+package ca.acadiau.cs.comp4583.fish.data;
 
 import java.io.Serializable;
 
-import cs.acadiau.comp4583.fish.R;
+import ca.acadiau.cs.comp4583.fish.R;
 
 /**
  * A caught fish.
@@ -21,16 +21,20 @@ public class Fish implements Serializable
     private TagColor tagColor;
     private boolean tookSample;
     private int length;
-    private Condition condition;
+    private boolean exactLength;
+    private Condition catchHealth;
+    private Condition releaseHealth;
 
     /**
      * Define a caught fish.
      * 
      * @param species the species of fish
      * @param length the length of the fish in millimetres
-     * @param condition the condition of the fish
+     * @param exactLength whether the length of the fish is exact
+     * @param catchHealth the condition of the fish on catch
+     * @param releaseHealth the condition of the fish on release
      */
-    public Fish(Species species, int length, Condition condition)
+    public Fish(Species species, int length, boolean exactLength, Condition catchHealth, Condition releaseHealth)
     {
         this.species = species;
         this.tagged = false;
@@ -38,7 +42,9 @@ public class Fish implements Serializable
         this.tagColor = null;
         this.tookSample = false;
         this.length = length;
-        this.condition = condition;
+        this.exactLength = exactLength;
+        this.catchHealth = catchHealth;
+        this.releaseHealth = releaseHealth;
     }
 
     /**
@@ -138,19 +144,51 @@ public class Fish implements Serializable
     }
 
     /**
-     * @param condition the condition of the fish
+     * @param exactLength whether the length of the fish is exact
      */
-    public void setCondition(Condition condition)
+    public void setExactLength(boolean exactLength)
     {
-        this.condition = condition;
+        this.exactLength = exactLength;
     }
 
     /**
-     * @return the condition of the fish
+     * @return whether the length of the fish is exact
      */
-    public Condition getCondition()
+    public boolean isExactLength()
     {
-        return this.condition;
+        return this.exactLength;
+    }
+
+    /**
+     * @param condition the condition of the fish on catch
+     */
+    public void setCatchHealth(Condition catchHealth)
+    {
+        this.catchHealth = catchHealth;
+    }
+
+    /**
+     * @return the condition of the fish on catch
+     */
+    public Condition getCatchHealth()
+    {
+        return this.catchHealth;
+    }
+
+    /**
+     * @param condition the condition of the fish on release
+     */
+    public void setReleaseHealth(Condition releaseHealth)
+    {
+        this.releaseHealth = releaseHealth;
+    }
+
+    /**
+     * @return the condition of the fish on release
+     */
+    public Condition getReleaseHealth()
+    {
+        return this.releaseHealth;
     }
 
     /**
@@ -172,6 +210,7 @@ public class Fish implements Serializable
         this.validateTagged();
         this.validateTagId();
         this.validateTagColor();
+        this.validateFishCondition();
 
         return true;
     }
@@ -208,6 +247,15 @@ public class Fish implements Serializable
         try
         {
             this.validateTagColor();
+        }
+        catch (FishException e)
+        {
+            if (e.isFatal()) throw e;
+        }
+
+        try
+        {
+            this.validateFishCondition();
         }
         catch (FishException e)
         {
@@ -284,6 +332,19 @@ public class Fish implements Serializable
             throw new FishException(R.string.validation_length_too_large, this, false);
         else if (false) /* if the given length is too small... */
             throw new FishException(R.string.validation_length_too_small, this, false);
+        return true;
+    }
+
+    /**
+     * Validates the condition of the fish.
+     * 
+     * @return true
+     * @throws FishException in the event of improper data
+     */
+    public boolean validateFishCondition() throws FishException
+    {
+        if (this.catchHealth == Condition.DEAD && this.releaseHealth != Condition.DEAD)
+            throw new FishException(R.string.validation_conflicting_conditions, this, true);
         return true;
     }
 }
