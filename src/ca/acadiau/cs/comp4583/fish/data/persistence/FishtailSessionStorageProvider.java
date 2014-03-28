@@ -19,7 +19,7 @@ import org.apache.http.util.EntityUtils;
 import android.util.Log;
 import ca.acadiau.cs.comp4583.fish.data.FishingSession;
 
-import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 /**
@@ -70,7 +70,10 @@ public class FishtailSessionStorageProvider implements SessionStorageProvider
     public void submitSessions(List<FishingSession> sessions) throws IOException
     {
         /* First, we must serialize the sessions to JSON. */
-        String json = new Gson().toJson(sessions, new TypeToken<List<FishingSession>>() {}.getType());
+        String json = new GsonBuilder()
+                .serializeNulls()
+                .create()
+                .toJson(sessions, new TypeToken<List<FishingSession>>() {}.getType());
 
         /* Now we POST it off. */
         HttpClient client = new DefaultHttpClient();
