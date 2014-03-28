@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.IBinder;
 import ca.acadiau.cs.comp4583.fish.R;
 import ca.acadiau.cs.comp4583.fish.data.FishException;
@@ -24,6 +25,7 @@ public class SessionStorageService extends Service
 {
     private static final String PERSISTENCE_FILENAME = "persisted_sessions";
 
+    private SessionStorageBinder binder = new SessionStorageBinder();
     private SubmissionThread submissionThread;
 
     @Override
@@ -41,40 +43,53 @@ public class SessionStorageService extends Service
     @Override
     public int onStartCommand(Intent intent, int flags, int startId)
     {
-        return 0;
+        return Service.START_NOT_STICKY;
     }
 
     @Override
     public IBinder onBind(Intent intent)
     {
-        return null;
+        return this.binder;
+    }
+
+    public class SessionStorageBinder extends Binder
+    {
+        /**
+         * Enqueue a session for persistent storage. Does not necessarily store
+         * the session immediately; it may be held until network access is
+         * available. Fish in submitted sessions will be validated. In the event
+         * of a validation error, a {@link FishException} is thrown.
+         * 
+         * @param session the session to be stored
+         * @throws FishException if a validation error occurs with one of the
+         *             fish
+         */
+        public void submitSession(FishingSession session) throws FishException
+        {
+            session.validate(true);
+
+            SessionStorageService.this.submissionThread.sessions.add(session);
+        }
     }
 
     /**
-     * Enqueue a session for persistent storage. Does not necessarily store the
-     * session immediately; it may be held until network access is available.
-     * Fish in submitted sessions will be validated. In the event of a
-     * validation error, a {@link FishException} is thrown.
+     * Background thread to handle actual submission of sessions to storage.
      * 
-     * @param session the session to be stored
-     * @throws FishException if a validation error occurs with one of the fish
+     * @since 1.0.0
+     * @author Samuel Coleman <105709c@acadiau.ca>
      */
-    public void submitSession(FishingSession session) throws FishException
-    {
-        session.validate(true);
-
-        this.submissionThread.sessions.add(session);
-    }
-
     private class SubmissionThread extends Thread
     {
         private static final int SUBMISSION_INTERVAL = 1000 * 60 * 5; /* 5 min */
+        private static final int MAX_RETRIES = 3;
 
-        LinkedList<FishingSession> sessions;
+        private int retries;
+        private LinkedList<FishingSession> sessions;
         private SessionStorageProvider sessionStorageProvider;
 
         public SubmissionThread()
         {
+            this.retries = 0;
             this.sessions = new LinkedList<FishingSession>();
             try
             {
@@ -109,7 +124,7 @@ public class SessionStorageService extends Service
         @Override
         public void run()
         {
-            while (!Thread.interrupted())
+            while (!Thread.interrupted() && this.retries < SubmissionThread.MAX_RETRIES)
             {
                 if (this.sessions.size() > 0
                         && this.sessionStorageProvider.isProviderAvailable())
@@ -153,6 +168,11 @@ public class SessionStorageService extends Service
             {
                 /* Can't submit? Too bad, so sad. */
             }
+
+            /* If we're stopping because we've run out of retries, we need to
+             * notify the service that we're giving up. */
+            if (this.retries >= SubmissionThread.MAX_RETRIES)
+                SessionStorageService.this.stopSelf();
         }
 
         /**

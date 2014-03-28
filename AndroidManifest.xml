@@ -66,6 +66,7 @@
             android:name="ca.acadiau.cs.comp4583.fish.FishActivity"
             android:label="@string/title_activity_fish" >
         </activity>
+        <service android:name="ca.acadiau.cs.comp4583.fish.data.persistence.SessionStorageService" />
     </application>
 
 </manifest>
