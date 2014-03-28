@@ -19,6 +19,7 @@ import android.widget.ScrollView;
 import android.widget.Spinner;
 import ca.acadiau.cs.comp4583.fish.data.Condition;
 import ca.acadiau.cs.comp4583.fish.data.Fish;
+import ca.acadiau.cs.comp4583.fish.data.FishException;
 import ca.acadiau.cs.comp4583.fish.data.FishingSession;
 import ca.acadiau.cs.comp4583.fish.data.Species;
 import ca.acadiau.cs.comp4583.fish.data.TagColor;
@@ -220,7 +221,7 @@ public class SubmitFishActivity extends Activity {
 				{
 					
 					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
-							context);
+							SubmitFishActivity.this);
 					alertBuilder
 							.setMessage("Are you sure you want to continue with an invalid tag color?");
 					alertBuilder.setCancelable(true);
