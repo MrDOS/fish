@@ -1,5 +1,6 @@
 package ca.acadiau.cs.comp4583.fish.data.persistence;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -26,11 +27,15 @@ public class SessionStorageService extends Service
     private static final String PERSISTENCE_FILENAME = "persisted_sessions";
 
     private SessionStorageBinder binder = new SessionStorageBinder();
-    private SubmissionThread submissionThread = new SubmissionThread();
+    private SubmissionThread submissionThread;
 
     @Override
     public void onCreate()
     {
+        super.onCreate();
+
+        submissionThread = new SubmissionThread();
+
         /* We only want to start the submission thread right away if we've still
          * got sessions unsubmitted. */
         if (this.submissionThread.sessions.size() > 0)
@@ -209,8 +214,8 @@ public class SessionStorageService extends Service
         @SuppressWarnings("unchecked")
         private void loadPersistedFishingSessions() throws IOException, ClassNotFoundException
         {
-            ObjectInputStream input = new ObjectInputStream(
-                    openFileInput(SessionStorageService.PERSISTENCE_FILENAME));
+            FileInputStream stream = openFileInput(SessionStorageService.PERSISTENCE_FILENAME);
+            ObjectInputStream input = new ObjectInputStream(stream);
             this.sessions = (LinkedList<FishingSession>) input.readObject();
             input.close();
         }
