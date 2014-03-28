@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import ca.acadiau.cs.comp4583.fish.data.User;
 import ca.acadiau.cs.comp4583.fish.data.persistence.LoginHandler;
 import ca.acadiau.cs.comp4583.fish.data.persistence.TrackMyFishLoginProvider;
@@ -26,6 +27,9 @@ public class LoginActivity extends Activity implements LoginHandler
     public static final String LOGIN_PREFS = "TMFPreferences";
     public static final String LOGIN_PREFS_USERNAME = "username";
 
+    private SharedPreferences preferences;
+    private String username;
+
     private ProgressDialog loginDialog = null;
 
     @Override
@@ -33,7 +37,19 @@ public class LoginActivity extends Activity implements LoginHandler
     {
         super.onCreate(savedInstanceState);
 
-        /* Set the layout. */
+        /* Load access to the shared preferences. */
+        this.preferences = getSharedPreferences(LoginActivity.LOGIN_PREFS, 0);
+
+        /* Set the layout dependent on whether the user is logged in or not. */
+        this.username = preferences.getString(LOGIN_PREFS_USERNAME, null);
+        if (this.username == null)
+            this.initializeLogin();
+        else
+            this.initializeLogout();
+    }
+
+    private void initializeLogin()
+    {
         this.setContentView(R.layout.login);
 
         final Button backButton = (Button) this.findViewById(R.id.back_from_login_button);
@@ -95,6 +111,26 @@ public class LoginActivity extends Activity implements LoginHandler
         (passwordEditText).addTextChangedListener(loginEligibilityWatcher);
     }
 
+    private void initializeLogout()
+    {
+        this.setContentView(R.layout.logout);
+
+        ((TextView) this.findViewById(R.id.logged_in_text)).setText(
+                String.format(getString(R.string.logged_in_text), this.username));
+
+        ((Button) this.findViewById(R.id.logout_button)).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                SharedPreferences.Editor editor = LoginActivity.this.preferences.edit();
+                editor.remove(LoginActivity.LOGIN_PREFS_USERNAME);
+                editor.commit();
+
+                LoginActivity.this.finish();
+            }
+        });
+    }
+
     private void showLoginDialog()
     {
         this.loginDialog = ProgressDialog.show(this,
@@ -113,8 +149,7 @@ public class LoginActivity extends Activity implements LoginHandler
     {
         this.hideLoginDialog();
 
-        SharedPreferences preferences = getSharedPreferences(LoginActivity.LOGIN_PREFS, 0);
-        SharedPreferences.Editor editor = preferences.edit();
+        SharedPreferences.Editor editor = this.preferences.edit();
         editor.putString(LoginActivity.LOGIN_PREFS_USERNAME, user.getUsername());
         editor.commit();
 
