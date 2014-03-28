@@ -3,9 +3,9 @@ package ca.acadiau.cs.comp4583.fish.data.persistence;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.LinkedList;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -14,7 +14,9 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
+import android.util.Log;
 import ca.acadiau.cs.comp4583.fish.data.FishingSession;
 
 import com.google.gson.Gson;
@@ -30,10 +32,10 @@ import com.google.gson.reflect.TypeToken;
 public class FishtailSessionStorageProvider implements SessionStorageProvider
 {
     private static final String TEST_HOSTNAME = "falcon.acadiau.ca";
+    private static final int TEST_PORT = 80; /* HTTP */
     private static final int REACHABLE_TIMEOUT = 1000;
 
     private static final int SECRET_LENGTH = 40;
-    private static final String SECRET_XOR_KEY = "MgYhuXdhANWLbiDv3SRpJ94wTiYl5cgc3gD9keRK";
 
     private final String endpoint;
     private final String secret;
@@ -49,17 +51,19 @@ public class FishtailSessionStorageProvider implements SessionStorageProvider
     {
         try
         {
-            return InetAddress
-                    .getByName(FishtailSessionStorageProvider.TEST_HOSTNAME)
-                    .isReachable(FishtailSessionStorageProvider.REACHABLE_TIMEOUT);
-        }
-        catch (UnknownHostException e)
-        {
+            Socket socket = new Socket();
+            socket.connect(new InetSocketAddress(
+                    FishtailSessionStorageProvider.TEST_HOSTNAME,
+                    FishtailSessionStorageProvider.TEST_PORT),
+                    FishtailSessionStorageProvider.REACHABLE_TIMEOUT);
+            socket.close();
+            return true;
         }
         catch (IOException e)
         {
+            /* Any exceptions can be considered a test failure. */
+            return false;
         }
-        return false;
     }
 
     @Override
@@ -72,27 +76,27 @@ public class FishtailSessionStorageProvider implements SessionStorageProvider
         HttpClient client = new DefaultHttpClient();
 
         HttpPost request = new HttpPost(this.endpoint);
-        LinkedList<NameValuePair> parameters = new LinkedList<NameValuePair>();
+        ArrayList<NameValuePair> parameters = new ArrayList<NameValuePair>();
         parameters.add(new BasicNameValuePair("secret", this.secret));
-        parameters.add(new BasicNameValuePair("session", json));
+        parameters.add(new BasicNameValuePair("sessions", json));
 
         try
         {
-            request.setEntity(new UrlEncodedFormEntity(parameters));
+            request.setEntity(new UrlEncodedFormEntity(parameters, "UTF-8"));
         }
         catch (UnsupportedEncodingException e)
         {
             /* URL encoding should always be supported. */
         }
 
-        client.execute(request);
+        String response = EntityUtils.toString(client.execute(request).getEntity());
+        Log.d(FishtailSessionStorageProvider.class.getSimpleName(), response);
+        /* Error checking? Who cares! If the data was rejected, chances are
+         * incredibly good it's not something that resubmission will fix. */
     }
 
     /**
-     * Load and decode the Fishtail secret key from file. The secret key stored
-     * in assets/fishtail_secret is not immediately usable; it is XOR'd against
-     * the value of FishtailSessionStorageProvider.SECRET_XOR_KEY. Yes, this is
-     * inconvenient. Suck it up, buttercup.
+     * Load and decode the Fishtail secret key from an input stream.
      * 
      * @param stream the stream containing the encoded secret key
      * @return the Fishtail secret key
@@ -101,7 +105,7 @@ public class FishtailSessionStorageProvider implements SessionStorageProvider
     {
         StringBuilder secret = new StringBuilder(FishtailSessionStorageProvider.SECRET_LENGTH);
         for (int i = 0; i < FishtailSessionStorageProvider.SECRET_LENGTH; i++)
-            secret.append(((char) stream.read()) ^ FishtailSessionStorageProvider.SECRET_XOR_KEY.charAt(i));
+            secret.append((char) stream.read());
 
         return secret.toString();
     }
