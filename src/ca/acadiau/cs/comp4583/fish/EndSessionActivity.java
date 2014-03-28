@@ -1,6 +1,7 @@
 package ca.acadiau.cs.comp4583.fish;
 
 import java.util.Arrays;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import android.app.Activity;
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import ca.acadiau.cs.comp4583.fish.data.FishException;
 import ca.acadiau.cs.comp4583.fish.data.FishingSession;
 import ca.acadiau.cs.comp4583.fish.data.persistence.SessionStorageService;
@@ -35,6 +37,7 @@ public class EndSessionActivity extends Activity
         final Button complete_session_button = (Button) findViewById(R.id.complete_session_button);
         final Button back_session_button = (Button) findViewById(R.id.submit_new_session_data_button);
         final Spinner location_spinner = (Spinner) findViewById(R.id.location_text_spinner);
+        final TimePicker endTimePicker = (TimePicker) findViewById(R.id.end_time_picker);
 
         List<String> locations = Arrays.asList(getResources().getStringArray(R.array.locations));
 
@@ -81,7 +84,12 @@ public class EndSessionActivity extends Activity
                 session.setAnglers(Integer.valueOf(anglersText.getText().toString()));
                 session.setLines(Integer.valueOf(linesText.getText().toString()));
                 session.setCatches(Integer.valueOf(num_catches_Text.getText().toString()));
-                // TODO Something with EndTime
+
+                GregorianCalendar endCalendar = new GregorianCalendar();
+                endCalendar.setTimeInMillis(session.getStartDate() * 1000);
+                endCalendar.set(GregorianCalendar.HOUR, endTimePicker.getCurrentHour());
+                endCalendar.set(GregorianCalendar.MINUTE, endTimePicker.getCurrentMinute());
+                session.setEndDate(endCalendar.getTimeInMillis() / 1000);
 
                 /* Having populated the session data, we need to start the
                  * submission service and pass it the session. */
