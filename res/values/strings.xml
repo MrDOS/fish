@@ -38,7 +38,7 @@
     <string name="tagged_id_text_text">Tag ID</string>
     <string name="tagged_colour_text_text">Colour</string>
     <string name="tagged_scale_text_text">Scale Sample</string>
-    <string name="fish_length_text_text">Fish Length</string>
+    <string name="fish_length_text_text">Fish Length (cm)</string>
     <string name="fish_condition_text_text">Fish Caught Condition</string>
     <string name="fish_release_condition_text_text">Fish Release Condition</string>
     <string name="save_fish_button_text">Save Fish</string>

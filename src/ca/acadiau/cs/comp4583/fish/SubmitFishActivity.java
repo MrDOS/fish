@@ -159,7 +159,8 @@ public class SubmitFishActivity extends Activity {
 				// Fish(Species species, int length, boolean exactLength,
 				// Condition catchHealth, Condition releaseHealth)
 				EditText lengthText = (EditText) findViewById(R.id.fish_length_text_edit);
-				int length = Integer.parseInt(lengthText.getText().toString());
+				/* Length is given in cm but must be passed to storage as mm. */
+				int length = (int) (Double.parseDouble(lengthText.getText().toString()) * 100);
 				Boolean estimate = estimateText.isChecked();
 
 				Species species = (Species) speciesSpinner.getSelectedItem();
