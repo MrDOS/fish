@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import ca.acadiau.cs.comp4583.fish.data.Condition;
 import ca.acadiau.cs.comp4583.fish.data.Fish;
@@ -158,9 +159,22 @@ public class SubmitFishActivity extends Activity {
 					fish.setTagColor(tagColor);
 				}
 				session.getFish().add(fish);
+
+				SubmitFishActivity.this.reset();
 			}
 		});
 
 	}
 
-}
+    private void reset()
+    {
+        ((Spinner) findViewById(R.id.tagged_spinner)).setSelection(0);
+        ((CheckBox) findViewById(R.id.tagged_scaled_check)).setChecked(false);
+        ((EditText) findViewById(R.id.fish_length_text_edit)).getEditableText().clear();
+        ((CheckBox) findViewById(R.id.fish_length_check)).setChecked(false);
+        ((Spinner) findViewById(R.id.fish_release_condition_spinner)).setSelection(0);
+        ((Spinner) findViewById(R.id.fish_condition_spinner)).setSelection(0);
+
+        ((ScrollView) findViewById(R.id.fish_scroll)).fullScroll(ScrollView.FOCUS_UP);
+    }
+}   
