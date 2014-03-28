@@ -152,7 +152,7 @@
             android:layout_below="@+id/fish_length_text"
             android:layout_toLeftOf="@+id/fish_length_check"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="numberDecimal" />
 
         <CheckBox
             android:id="@+id/fish_length_check"
