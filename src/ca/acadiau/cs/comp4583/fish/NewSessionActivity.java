@@ -61,6 +61,7 @@ public class NewSessionActivity extends Activity {
             	 Intent i = new Intent(getApplicationContext(),SubmitFishActivity.class);
             	 i.putExtra("Session", session);
             	 startActivity(i);
+            	 finish();
              }
          });
       

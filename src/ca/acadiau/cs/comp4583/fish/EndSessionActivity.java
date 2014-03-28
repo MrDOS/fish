@@ -110,6 +110,7 @@ public class EndSessionActivity extends Activity
                         }
 
                         unbindService(this);
+                        finish();
                     }
 
                     @Override

@@ -113,6 +113,7 @@ public class SubmitFishActivity extends Activity {
 						EndSessionActivity.class);
 				i.putExtra("Session", session);
 				startActivity(i);
+                finish();
 
 			}
 		});
@@ -122,6 +123,7 @@ public class SubmitFishActivity extends Activity {
 						SessionDataActivity.class);
 				i.putExtra("Session", session);
 				startActivity(i);
+                finish();
 
 			}
 		});

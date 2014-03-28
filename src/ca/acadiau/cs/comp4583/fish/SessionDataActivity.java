@@ -79,6 +79,7 @@ public class SessionDataActivity extends Activity {
                 session.setExactCatches(!estimated_catches_chbx.isChecked());
 				i.putExtra("Session", session);
 				startActivity(i);
+				finish();
 
 			}
 		});
@@ -88,6 +89,7 @@ public class SessionDataActivity extends Activity {
 						SubmitFishActivity.class);
 				i.putExtra("Session", session);
 				startActivity(i);
+                finish();
 
 			}
 		});
