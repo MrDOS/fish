@@ -89,7 +89,7 @@ public class EndSessionActivity extends Activity
 
                 GregorianCalendar endCalendar = new GregorianCalendar();
                 endCalendar.setTimeInMillis(session.getStartDate() * 1000);
-                endCalendar.set(GregorianCalendar.HOUR, endTimePicker.getCurrentHour());
+                endCalendar.set(GregorianCalendar.HOUR_OF_DAY, endTimePicker.getCurrentHour());
                 endCalendar.set(GregorianCalendar.MINUTE, endTimePicker.getCurrentMinute());
                 session.setEndDate(endCalendar.getTimeInMillis() / 1000);
 
