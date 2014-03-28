@@ -14,6 +14,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
+import android.os.Handler;
+import android.os.Looper;
 import ca.acadiau.cs.comp4583.fish.R;
 import ca.acadiau.cs.comp4583.fish.data.User;
 
@@ -28,6 +30,7 @@ public class TrackMyFishLoginProvider extends AbstractLoginProvider
     final protected static char[] hexArray = "0123456789abcdef".toCharArray();
 
     private final String endpoint;
+    private final Looper callbackLooper;
 
     /**
      * Construct the login provider.
@@ -37,6 +40,7 @@ public class TrackMyFishLoginProvider extends AbstractLoginProvider
     public TrackMyFishLoginProvider(String endpoint)
     {
         this.endpoint = endpoint;
+        this.callbackLooper = Looper.myLooper();
     }
 
     @Override
@@ -55,9 +59,21 @@ public class TrackMyFishLoginProvider extends AbstractLoginProvider
                 {
                     String response = EntityUtils.toString(client.execute(request).getEntity());
                     if (response.equals("true"))
-                        TrackMyFishLoginProvider.this.notifyLoginSuccess(new User(username));
+                        new Handler(TrackMyFishLoginProvider.this.callbackLooper).post(new Runnable() {
+                            @Override
+                            public void run()
+                            {
+                                TrackMyFishLoginProvider.this.notifyLoginSuccess(new User(username));
+                            }
+                        });
                     else
-                        TrackMyFishLoginProvider.this.notifyLoginFailure(R.string.trackmyfish_login_rejection);
+                        new Handler(TrackMyFishLoginProvider.this.callbackLooper).post(new Runnable() {
+                            @Override
+                            public void run()
+                            {
+                                TrackMyFishLoginProvider.this.notifyLoginFailure(R.string.trackmyfish_login_rejection);
+                            }
+                        });
                 }
                 catch (IOException e)
                 {
