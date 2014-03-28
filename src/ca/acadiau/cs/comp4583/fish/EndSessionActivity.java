@@ -14,9 +14,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
-import ca.acadiau.cs.comp4583.fish.data.FishException;
 import ca.acadiau.cs.comp4583.fish.data.FishingSession;
-import ca.acadiau.cs.comp4583.fish.data.persistence.SessionStorageServiceManager;
 
 public class EndSessionActivity extends Activity {
 
@@ -77,15 +75,6 @@ public class EndSessionActivity extends Activity {
                 session.setLines(Integer.valueOf(linesText.getText().toString()));
                 session.setCatches(Integer.valueOf(num_catches_Text.getText().toString()));
                 // TODO Something with EndTime
-
-                try
-                {
-                    new SessionStorageServiceManager().submitSession(session);
-                    finish();
-                }
-                catch (FishException e)
-                {
-                }
              }
 		 });
 		  back_session_button.setOnClickListener(new View.OnClickListener() {
