@@ -118,6 +118,14 @@ public class LoginActivity extends Activity implements LoginHandler
         ((TextView) this.findViewById(R.id.logged_in_text)).setText(
                 String.format(getString(R.string.logged_in_text), this.username));
 
+        ((Button) this.findViewById(R.id.back_from_login_button)).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                LoginActivity.this.finish();
+            }
+        });
+
         ((Button) this.findViewById(R.id.logout_button)).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v)
