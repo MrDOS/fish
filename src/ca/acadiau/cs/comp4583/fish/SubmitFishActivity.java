@@ -176,7 +176,7 @@ public class SubmitFishActivity extends Activity {
 					alertBuilder
 							.setMessage("Length must have a valid number.");
 					alertBuilder.setCancelable(true);
-					alertBuilder.setPositiveButton("Okay",
+					alertBuilder.setPositiveButton(android.R.string.ok,
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int id) {
@@ -225,7 +225,7 @@ public class SubmitFishActivity extends Activity {
 					alertBuilder
 							.setMessage("Are you sure you want to continue with an invalid tag color?");
 					alertBuilder.setCancelable(true);
-					alertBuilder.setPositiveButton("Yes",
+					alertBuilder.setPositiveButton(R.string.yes,
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int id) {
@@ -233,7 +233,7 @@ public class SubmitFishActivity extends Activity {
 									
 								}
 							});
-					alertBuilder.setNegativeButton("No",
+					alertBuilder.setNegativeButton(R.string.no,
 		                    new DialogInterface.OnClickListener() {
 		                public void onClick(DialogInterface dialog, int id) {
 		                	submitFish = false;

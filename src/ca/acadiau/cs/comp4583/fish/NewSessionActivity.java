@@ -60,7 +60,7 @@ public class NewSessionActivity extends Activity {
 					alertBuilder
 							.setMessage("Number of Anglers must have a valid number.");
 					alertBuilder.setCancelable(true);
-					alertBuilder.setPositiveButton("Okay",
+					alertBuilder.setPositiveButton(android.R.string.ok,
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int id) {
@@ -82,7 +82,7 @@ public class NewSessionActivity extends Activity {
 					alertBuilder
 							.setMessage("Number of Rods must have a valid number.");
 					alertBuilder.setCancelable(true);
-					alertBuilder.setPositiveButton("Okay",
+					alertBuilder.setPositiveButton(android.R.string.ok,
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
 										int id) {

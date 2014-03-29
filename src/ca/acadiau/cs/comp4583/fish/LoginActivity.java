@@ -175,7 +175,7 @@ public class LoginActivity extends Activity implements LoginHandler
 
                 new AlertDialog.Builder(LoginActivity.this)
                         .setMessage(getString(messageRes))
-                        .setPositiveButton(R.string.ok, null)
+                        .setPositiveButton(android.R.string.ok, null)
                         .create()
                         .show();
             }

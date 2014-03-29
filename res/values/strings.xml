@@ -7,7 +7,6 @@
     <string name="provider_error">Couldn\'t access network- or Wi-Fi-based location information!</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="ok">OK</string>
     <string name="begin_session">Begin New Session</string>
     <string name="location_text_text">Location</string>
     <string name="spacer"></string>
