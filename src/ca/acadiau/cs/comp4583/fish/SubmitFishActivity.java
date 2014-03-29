@@ -216,6 +216,7 @@ public class SubmitFishActivity extends Activity {
 					fish.validateTagColor();
 
 					session.getFish().add(fish);
+	                SubmitFishActivity.this.reset();
 				}
 				catch(FishException e)
 				{
@@ -227,10 +228,9 @@ public class SubmitFishActivity extends Activity {
 					alertBuilder.setCancelable(true);
 					alertBuilder.setPositiveButton(R.string.yes,
 							new DialogInterface.OnClickListener() {
-								public void onClick(DialogInterface dialog,
-										int id) {
+								public void onClick(DialogInterface dialog, int id) {
 									session.getFish().add(fish);
-									
+				                    SubmitFishActivity.this.reset();
 								}
 							});
 					alertBuilder.setNegativeButton(R.string.no,
@@ -246,8 +246,6 @@ public class SubmitFishActivity extends Activity {
 					fishTaggedAlert.show();
 
 				}
-
-				SubmitFishActivity.this.reset();
 			}
 		});
 
