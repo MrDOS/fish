@@ -178,6 +178,7 @@ public class EndSessionActivity extends Activity {
 						SubmitFishActivity.class);
 				i.putExtra("Session", session);
 				startActivity(i);
+				finish();
 
 			}
 		});
