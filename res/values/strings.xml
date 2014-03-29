@@ -16,7 +16,7 @@
     <string name="start_date_text_text">Start Date</string>
     <string name="end_time_text_text">End Time</string>
     <string name="total_fish_caught_text_text">Total Fish Caught</string>
-    <string name="num_anglers_text_text">Number of Anglers</string>
+    <string name="num_anglers_text_text">Number of Anglers in Area</string>
     <string name="num_contributing_anglers_text_text">Number of Contributing Anglers</string>
     <string name="num_rods_text_text">Number of Rods</string>
     <string name="optional_session_begin_text_text">Optional Sessional Data</string>
@@ -24,8 +24,8 @@
     <string name="num_anglers_edit_text">Can be added later</string>
     <string name="number_contributing_anglers_edit_text">Can be added later</string>
     <string name="estimate">Estimate</string>
-    <string name="num_catches_text_text">Number of Catches</string>
-    <string name="num_fish_text_text">Number of Fish</string>
+    <string name="num_catches_text_text">Number of Fish Caught</string>
+    <string name="num_fish_text_text">Number of Fish Caught</string>
     <string name="edited">Edited</string>
     <string name="back_session">Back to Session</string>
     <string name="edit_session_button_text">Edit Session Data</string>
@@ -42,10 +42,10 @@
     <string name="fish_condition_text_text">Fish Caught Condition</string>
     <string name="fish_release_condition_text_text">Fish Release Condition</string>
     <string name="save_fish_button_text">Save Fish</string>
-    <string name="colour_warning_text_text">Colour Warning</string>
-    <string name="fish_condition_warning_text_text">Fish COndition Warning</string>
-    <string name="fish_length_warning_text_text">Fish Length Warning</string>
-    <string name="login_warning_text">You need to be logged in before this session will be submitted</string>
+    <string name="colour_warning_text_text">That is not a colour for the selected species</string>
+    <string name="fish_condition_warning_text_text">Fish Condition Warning</string>
+    <string name="fish_length_warning_text_text">That is not an appropriate length for the species</string>
+    <string name="login_warning_text">Once this session is submitted, you need to login to have it sent to the database.</string>
     <string name="login_dialog_title">Logging in&#8230;</string>
     <string name="login_dialog_message">Please wait while logging in.</string>
     <string name="login_text_text">Login</string>

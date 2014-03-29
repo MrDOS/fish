@@ -3,6 +3,9 @@ package ca.acadiau.cs.comp4583.fish;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,10 +24,12 @@ import ca.acadiau.cs.comp4583.fish.data.Species;
 import ca.acadiau.cs.comp4583.fish.data.TagColor;
 
 public class SubmitFishActivity extends Activity {
+	Context context;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.submit_fish);
+		context = this;
 		Intent thisIntent = getIntent();
 		final FishingSession session = (FishingSession) thisIntent
 				.getSerializableExtra("Session");
@@ -131,7 +136,30 @@ public class SubmitFishActivity extends Activity {
 				// Fish(Species species, int length, boolean exactLength,
 				// Condition catchHealth, Condition releaseHealth)
 				EditText lengthText = (EditText) findViewById(R.id.fish_length_text_edit);
-				int length = Integer.parseInt(lengthText.getText().toString());
+				int length = 0;
+				try
+				{
+					length = Integer.parseInt(lengthText.getText().toString());
+				}
+				catch (NumberFormatException e) {
+
+					System.out.println(e.getMessage());
+					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
+							context);
+					alertBuilder
+							.setMessage("Length must have a valid number.");
+					alertBuilder.setCancelable(true);
+					alertBuilder.setPositiveButton("Okay",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									dialog.cancel();
+								}
+							});
+					AlertDialog numberAlert = alertBuilder.create();
+					numberAlert.show();
+					return;
+				}
 				Boolean estimate = estimateText.isChecked();
 
 				Species species = (Species) speciesSpinner.getSelectedItem();
