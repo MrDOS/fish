@@ -19,12 +19,14 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import ca.acadiau.cs.comp4583.fish.data.Condition;
 import ca.acadiau.cs.comp4583.fish.data.Fish;
+import ca.acadiau.cs.comp4583.fish.data.FishException;
 import ca.acadiau.cs.comp4583.fish.data.FishingSession;
 import ca.acadiau.cs.comp4583.fish.data.Species;
 import ca.acadiau.cs.comp4583.fish.data.TagColor;
 
 public class SubmitFishActivity extends Activity {
 	Context context;
+	boolean submitFish;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -143,7 +145,6 @@ public class SubmitFishActivity extends Activity {
 				}
 				catch (NumberFormatException e) {
 
-					System.out.println(e.getMessage());
 					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
 							context);
 					alertBuilder
@@ -166,15 +167,17 @@ public class SubmitFishActivity extends Activity {
 				Condition catchCondition = (Condition) catchConditionSpinner.getSelectedItem();
 				Condition releaseCondition = (Condition) releaseConditionSpinner.getSelectedItem();
 
-				Fish fish = new Fish(species, length, !estimate, catchCondition,
+				final Fish fish = new Fish(species, length, !estimate, catchCondition,
 						releaseCondition);
 
 				if (tagged_spinner.getSelectedItem().toString().equals(getString(R.string.no))) {
+					fish.setTagged(false);
 					CheckBox tookSampleChbx = (CheckBox) findViewById(R.id.tagged_scaled_check);
 					boolean tookSample = tookSampleChbx.isChecked();
 					fish.setTookSample(tookSample);
 
 				} else {
+					fish.setTagged(true);
 					EditText taggedIDText = (EditText) findViewById(R.id.tagged_id_text_edit);
                     String tagId = taggedIDText.getText().toString();
 
@@ -183,7 +186,41 @@ public class SubmitFishActivity extends Activity {
                     fish.setTagId(tagId);
 					fish.setTagColor(tagColor);
 				}
-				session.getFish().add(fish);
+				try {
+					System.out.println("TRY VALIDATING");
+					fish.validateTagColor();
+
+					session.getFish().add(fish);
+				}
+				catch(FishException e)
+				{
+					
+					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
+							context);
+					alertBuilder
+							.setMessage("Are you sure you want to continue with an invalid tag color?");
+					alertBuilder.setCancelable(true);
+					alertBuilder.setPositiveButton("Yes",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									session.getFish().add(fish);
+									
+								}
+							});
+					alertBuilder.setNegativeButton("No",
+		                    new DialogInterface.OnClickListener() {
+		                public void onClick(DialogInterface dialog, int id) {
+		                	submitFish = false;
+		                    dialog.cancel();
+		                    
+		                }
+		            });
+					
+					AlertDialog fishTaggedAlert = alertBuilder.create();
+					fishTaggedAlert.show();
+
+				}
 			}
 		});
 

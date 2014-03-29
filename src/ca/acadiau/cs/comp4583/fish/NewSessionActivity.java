@@ -59,7 +59,6 @@ public class NewSessionActivity extends Activity {
 							.parseInt(anglersText.getText().toString());
 				} catch (NumberFormatException e) {
 
-					System.out.println(e.getMessage());
 					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
 							context);
 					alertBuilder
@@ -82,7 +81,6 @@ public class NewSessionActivity extends Activity {
 					lines = Integer.parseInt(linesText.getText().toString());
 				} catch (NumberFormatException e) {
 
-					System.out.println(e.getMessage());
 					AlertDialog.Builder alertBuilder = new AlertDialog.Builder(
 							context);
 					alertBuilder
