@@ -187,7 +187,6 @@ public class SubmitFishActivity extends Activity {
 					fish.setTagColor(tagColor);
 				}
 				try {
-					System.out.println("TRY VALIDATING");
 					fish.validateTagColor();
 
 					session.getFish().add(fish);
