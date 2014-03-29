@@ -6,10 +6,12 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
@@ -149,41 +151,25 @@ public class EndSessionActivity extends Activity {
 						endTimePicker.getCurrentMinute());
 				session.setEndDate(endCalendar.getTimeInMillis() / 1000);
 
-				/*
-				 * Having populated the session data, we need to start the
-				 * submission service and pass it the session.
-				 */
-				Intent serviceIntent = new Intent(EndSessionActivity.this,
-						SessionStorageService.class);
-				ServiceConnection serviceConnection = new ServiceConnection() {
-					@Override
-					public void onServiceConnected(ComponentName name,
-							IBinder service) {
-						try {
-							((SessionStorageBinder) service)
-									.submitSession(session);
-						} catch (FishException e) {
-							/* TODO: Deal with potential validation errors. */
-						}
-
-						unbindService(this);
-						finish();
-					}
-
-					@Override
-					public void onServiceDisconnected(ComponentName name) {
-					}
-				};
-
-				/*
-				 * Because bound services which are auto-started by being bound
-				 * are stopped when all bindings have been unbound, we manually
-				 * start the service. It may already have been started by
-				 * FishApplication, but repeatedly calling startService(Intent)
-				 * shouldn't hurt anything.
-				 */
-				startService(serviceIntent);
-				bindService(serviceIntent, serviceConnection, 0);
+                /* If the user isn't logged in, we want to warn them that their
+                 * session won't be submitted until they do so. */
+                SharedPreferences preferences = getSharedPreferences(LoginActivity.LOGIN_PREFS, 0);
+                String username = preferences.getString(LoginActivity.LOGIN_PREFS_USERNAME, null);
+                if (username == null)
+                    new AlertDialog.Builder(EndSessionActivity.this)
+                            .setMessage(R.string.login_warning_text)
+                            .setPositiveButton(android.R.string.ok, new Dialog.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which)
+                                {
+                                    EndSessionActivity.this.submitSession(session);
+                                }
+                            })
+                            .show();
+                /* If the user is logged in, we don't need to wait for them to
+                 * dismiss the dialog. */
+                else
+                    EndSessionActivity.this.submitSession(session);
 			}
 		});
 		back_session_button.setOnClickListener(new View.OnClickListener() {
@@ -196,6 +182,42 @@ public class EndSessionActivity extends Activity {
 			}
 		});
 
-	}
+    }
 
+    private void submitSession(final FishingSession session)
+    {
+        /* Having populated the session data, we need to start the submission
+         * service and pass it the session. */
+        Intent serviceIntent = new Intent(this, SessionStorageService.class);
+        ServiceConnection serviceConnection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service)
+            {
+                try
+                {
+                    ((SessionStorageBinder) service).submitSession(session);
+                }
+                catch (FishException e)
+                {
+                    /* Validation errors should've been taken care of in the UI
+                     * long before now. */
+                }
+
+                unbindService(this);
+                finish();
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName name)
+            {
+            }
+        };
+
+        /* Because bound services which are auto-started by being bound are
+         * stopped when all bindings have been unbound, we manually start the
+         * service. It may already have been started by FishApplication, but
+         * repeatedly calling startService(Intent) shouldn't hurt anything. */
+        startService(serviceIntent);
+        bindService(serviceIntent, serviceConnection, 0);
+    }
 }
