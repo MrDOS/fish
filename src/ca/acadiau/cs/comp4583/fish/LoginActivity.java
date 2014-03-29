@@ -3,6 +3,7 @@ package ca.acadiau.cs.comp4583.fish;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import ca.acadiau.cs.comp4583.fish.data.User;
 import ca.acadiau.cs.comp4583.fish.data.persistence.LoginHandler;
+import ca.acadiau.cs.comp4583.fish.data.persistence.SessionStorageService;
 import ca.acadiau.cs.comp4583.fish.data.persistence.TrackMyFishLoginProvider;
 
 /**
@@ -161,6 +163,10 @@ public class LoginActivity extends Activity implements LoginHandler
         editor.putString(LoginActivity.LOGIN_PREFS_USERNAME, user.getUsername());
         editor.commit();
 
+        /* Having logged in, we'll make sure the submission service starts in
+         * order to push out any unsubmitted sessions. */
+        startService(new Intent(this, SessionStorageService.class));
+
         this.finish();
     }
 
@@ -175,7 +181,7 @@ public class LoginActivity extends Activity implements LoginHandler
 
                 new AlertDialog.Builder(LoginActivity.this)
                         .setMessage(getString(messageRes))
-                        .setPositiveButton(R.string.ok, null)
+                        .setPositiveButton(android.R.string.ok, null)
                         .create()
                         .show();
             }

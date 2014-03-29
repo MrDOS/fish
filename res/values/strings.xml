@@ -7,7 +7,6 @@
     <string name="provider_error">Couldn\'t access network- or Wi-Fi-based location information!</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="ok">OK</string>
     <string name="begin_session">Begin New Session</string>
     <string name="location_text_text">Location</string>
     <string name="spacer"></string>
@@ -45,7 +44,7 @@
     <string name="colour_warning_text_text">That is not a colour for the selected species</string>
     <string name="fish_condition_warning_text_text">Fish Condition Warning</string>
     <string name="fish_length_warning_text_text">That is not an appropriate length for the species</string>
-    <string name="login_warning_text">Once this session is submitted, you need to login to have it sent to the database.</string>
+    <string name="login_warning_text">You haven\'t logged in. Sessions recorded while not logged in will be stored on your device and submitted once you log in.</string>
     <string name="login_dialog_title">Logging in&#8230;</string>
     <string name="login_dialog_message">Please wait while logging in.</string>
     <string name="login_text_text">Login</string>
